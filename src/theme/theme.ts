@@ -1,7 +1,7 @@
 
-
-import { createTheme } from "@mui/material/styles";
-
+// import { createTheme } from "@mui/material/styles";
+// import { createTheme } from '@mui/material';
+import createTheme from '@mui/material/styles/createTheme';
 // Augment the palette to include an customGray color
 declare module "@mui/material/styles" {
   interface Palette {
