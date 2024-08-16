@@ -1,19 +1,9 @@
 import * as React from "react";
-import {
-  AppBar,
-  Box,
-  Toolbar,
-  IconButton,
-  Badge,
-  Collapse,
-} from "@mui/material";
-import {
-  LocalGroceryStore as LocalGroceryStoreIcon,
-  Person as PersonIcon,
-} from "@mui/icons-material";
+import { AppBar, Box, Toolbar, Collapse } from "@mui/material";
 import { MainNavBar } from "./navBar";
 import { LogoBtn } from "../../logo-button";
 import { MainHeaderSearch } from "./search";
+import { PersonBox } from "./person-box";
 // ----------------------------------------------------------
 export function MainHeader() {
   // const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -45,28 +35,7 @@ export function MainHeader() {
             <LogoBtn />
             <MainHeaderSearch />
             <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ display: { xs: "none", md: "flex" } }}>
-              <IconButton
-                size="large"
-                edge="end"
-                aria-label="account of current user"
-                aria-haspopup="true"
-                // onClick={handleProfileMenuOpen}
-                color="inherit"
-              >
-                <PersonIcon />
-              </IconButton>
-              <IconButton
-                size="large"
-                aria-label="show 4 new mails"
-                color="inherit"
-              >
-                <Badge badgeContent={4} color="error">
-                  <LocalGroceryStoreIcon />
-                </Badge>
-              </IconButton>
-            </Box>
-            <Box sx={{ display: { xs: "flex", md: "none" } }}></Box>
+            <PersonBox />
           </Toolbar>
           <Collapse in={y}>
             <MainNavBar />
