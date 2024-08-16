@@ -1,11 +1,11 @@
 import { Box } from "@mui/material";
 import { Outlet } from "react-router-dom";
-import MainHeader from "../header/main-header/MainHeader";
+import Header from "../header/Header";
 
 const User = () => {
   return (
     <Box sx={{ display: "flex", flexDirection: "column" }}>
-      <MainHeader />
+      <Header/>
       <Outlet />
     </Box>
   );
