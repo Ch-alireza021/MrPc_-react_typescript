@@ -1,0 +1,1 @@
+export * from './main_header_style'
