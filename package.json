@@ -19,7 +19,8 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.1",
     "stylis": "^4.3.2",
-    "stylis-plugin-rtl": "^2.1.1"
+    "stylis-plugin-rtl": "^2.1.1",
+    "swiper": "^11.1.9"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
