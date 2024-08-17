@@ -1,3 +1,5 @@
 export * from './header'
 export * from './logo-button'
 export * from './footer'
+export * from './home'
+export * from './HOC'
