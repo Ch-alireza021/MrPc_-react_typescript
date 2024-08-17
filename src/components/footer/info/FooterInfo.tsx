@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 import { footerInfoData } from "../../../config";
 import { InfoComponent } from "./infoComponent";
+import SocialMedia from "./socialMedia";
 
 
 // ------------------------------------------
@@ -30,7 +31,7 @@ export const FooterInfo = () => {
           </InfoComponent>
         ))}
       </Box>
-      {/* <SocialMedia /> */}
+      <SocialMedia />
     </Box>
   );
 };
