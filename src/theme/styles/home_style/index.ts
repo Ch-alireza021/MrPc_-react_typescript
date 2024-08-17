@@ -1,0 +1,1 @@
+export * from "./advertiserd_card_style"

@@ -15,7 +15,7 @@ export const FooterHeader = () => {
       alignItems: "center",
       borderColor: "divider",
       borderRadius: 2,
-      bgcolor: "background.paper",
+      // bgcolor: "background.paper",
       color: "#404041",
       gap: 2,
     }}

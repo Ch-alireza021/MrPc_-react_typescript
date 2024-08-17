@@ -1,0 +1,38 @@
+@font-face {
+  font-family: "farsi";
+  src: url("./assets/fonts/Farsi-Digits-Without-Latin/Vazir-Bold-FD-WOL.woff2")
+      format("woff2"),
+    url("./assets/fonts/Farsi-Digits-Without-Latin/Vazir-Bold-FD-WOL.ttf")
+      format("woff2-variations");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "farsi";
+  src: url("./assets/fonts/Farsi-Digits-Without-Latin/Vazir-Light-FD-WOL.woff2")
+      format("woff2"),
+    url("./assets/fonts/Farsi-Digits-Without-Latin/Vazir-Light-FD-WOL.ttf")
+      format("woff2-variations");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "farsi";
+  src: url("./assets/fonts/Farsi-Digits-Without-Latin/Vazir-Medium-FD-WOL.woff2")
+      format("woff2"),
+    url("./assets/fonts/Farsi-Digits-Without-Latin/Vazir-Medium-FD-WOL.ttf")
+      format("woff2-variations");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "farsi";
+}
