@@ -1,7 +1,7 @@
-
 // import { createTheme } from "@mui/material/styles";
 // import { createTheme } from '@mui/material';
-import createTheme from '@mui/material/styles/createTheme';
+import createTheme from "@mui/material/styles/createTheme";
+import "./font.css";
 // Augment the palette to include an customGray color
 declare module "@mui/material/styles" {
   interface Palette {
@@ -19,7 +19,9 @@ declare module "@mui/material/styles" {
 
 export const theme = createTheme({
   direction: "rtl",
-
+  typography: {
+    fontFamily: 'farsi,IranSans, Arial, sans-serif',
+  },
   palette: {
     secondary: {
       main: "#03c03c",
@@ -43,7 +45,7 @@ export const theme = createTheme({
         },
       },
     },
-
+  
     MuiCssBaseline: {
       styleOverrides: {
         html: {
@@ -85,6 +87,5 @@ export const theme = createTheme({
   },
 });
 
-
-export const red=theme.palette.customRed.main
-export const darkGreen=theme.palette.secondary.dark
+export const red = theme.palette.customRed.main;
+export const darkGreen = theme.palette.secondary.dark;
