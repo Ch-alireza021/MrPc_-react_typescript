@@ -5,8 +5,9 @@ import { PATH } from "../config";
 // Lazy load components
 const User = Loadable(lazy(() => import("../layouts/user/User")));
 const Home = Loadable(lazy(() => import("../pages/users/home/Home")));
-const AboutUs = Loadable(
-  lazy(() => import("../pages/users/home/about_us/AboutUs"))
+const AboutUs = Loadable(lazy(() => import("../pages/about_us/AboutUs")));
+const CommonQuestions = Loadable(
+  lazy(() => import("../pages/common-questions/common_questions"))
 );
 
 // Define routes
@@ -17,6 +18,7 @@ export const routes: RouteObject[] = [
     children: [
       { path: PATH.HOME, element: <Home /> },
       { path: PATH.ABOUT_US, element: <AboutUs /> },
+      { path: PATH.COMMON_QUESTION, element: <CommonQuestions /> },
     ],
   },
 ];
