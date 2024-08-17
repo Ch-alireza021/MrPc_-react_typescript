@@ -20,7 +20,7 @@ declare module "@mui/material/styles" {
 export const theme = createTheme({
   direction: "rtl",
   typography: {
-    fontFamily: 'farsi,IranSans, Arial, sans-serif',
+    fontFamily: 'farsi,Vazirmatn,IranSans, Arial, sans-serif',
   },
   palette: {
     secondary: {

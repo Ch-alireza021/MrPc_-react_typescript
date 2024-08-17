@@ -14,7 +14,7 @@ import { Box } from "@mui/material";
 
 export const AdvertisingHeader = () => {
   return (
-    <Box padding={'1.5rem'}>
+    <Box padding={'1.5rem 0'}>
       <Swiper
         autoplay={{
           delay: 5000,
