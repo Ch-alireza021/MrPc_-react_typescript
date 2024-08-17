@@ -1,7 +1,8 @@
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import pic from "../../../../../public/32969-4-gaming-computer-free-download.png";
-import { about_us_static_data } from "../../../../config";
+import pic from "../../../public/32969-4-gaming-computer-free-download.png";
+import { about_us_static_data } from "../../config";
+
 const AboutUs = () => {
   return (
     <Box
