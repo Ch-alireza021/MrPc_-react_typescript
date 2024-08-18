@@ -7,9 +7,11 @@ const User = Loadable(lazy(() => import("../layouts/user/User")));
 const Home = Loadable(lazy(() => import("../pages/users/home/Home")));
 const AboutUs = Loadable(lazy(() => import("../pages/about_us/AboutUs")));
 const CommonQuestions = Loadable(
-  lazy(() => import("../pages/common-questions/common_questions"))
+  lazy(() => import("../pages/common-questions/Common_questions"))
 );
-const Terms = Loadable(lazy(() => import("../pages/terms/terms")));
+const Terms = Loadable(lazy(() => import("../pages/terms/Terms")));
+const Login = Loadable(lazy(() => import("../pages/login/Login")));
+
 // Define routes
 export const routes: RouteObject[] = [
   {
@@ -20,6 +22,7 @@ export const routes: RouteObject[] = [
       { path: PATH.ABOUT_US, element: <AboutUs /> },
       { path: PATH.COMMON_QUESTION, element: <CommonQuestions /> },
       { path: PATH.TERMS, element: <Terms /> },
+      { path: PATH.LOGIN, element: <Login /> },
     ],
   },
 ];
