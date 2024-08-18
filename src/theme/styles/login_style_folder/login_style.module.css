@@ -1,0 +1,88 @@
+.box1{
+    width: 400px;
+    height: 470px;
+    border:1px solid #03c03c ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    position: relative;
+    transition: .4s;
+}
+.box1:hover{
+ box-shadow: 0px 5px 5px 1px rgba(0,0,0,.2);
+ transform: translateY(-2%);
+}
+.box2{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    border-radius: 1rem;
+    
+}
+
+
+.box4{
+    width: 20px;
+    height: 20px;
+    /* background-image: linear-gradient(to right, #03c03c2f , #03c03c); */
+    background-image: linear-gradient(to right, #c4a6c5 , #CE2ED6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(20% , -20%);
+    animation: box 10s infinite;
+    border-radius: 500px;
+}
+.box5{
+    width: 20px;
+    height: 20px;
+    background-image: linear-gradient(to right, #788797 , #6699CF);
+    /* background-image: linear-gradient(to right, #03c03c2f , #03c03c); */
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(20% , -20%);
+    animation: box6 10s infinite;
+    border-radius: 500px;
+}
+ 
+@keyframes box {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    20% { transform: translate(380px, -50%) rotate(45deg); }
+    25% { transform: translate(387px, -10%) rotate(60deg); }
+    45% { transform: translate(387px, 450px) rotate(120deg); }
+    50% { transform: translate(380px, 457px) rotate(135deg); }
+    70% { transform: translate(-10%, 457px) rotate(180deg); }
+    75% { transform: translate(-50%, 450px) rotate(200deg); }
+    95% { transform: translate(-50%, 10%) rotate(300deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+@keyframes box6 {
+    0% { transform: translate(380px, 457px) rotate(135deg); }
+    20% { transform: translate(-10%, 457px) rotate(180deg); }
+    25% { transform: translate(-50%, 450px) rotate(200deg); }
+    45% { transform: translate(-50%, 10%) rotate(300deg); }
+    50% { transform: translate(-10%, -50%) rotate(360deg); }
+    70% { transform: translate(380px, -50%) rotate(45deg); }
+    75% { transform: translate(387px, -10%) rotate(60deg); }
+    95% { transform: translate(387px, 450px) rotate(120deg); }
+    100% { transform: translate(380px, 457px) rotate(135deg); }
+}
+
+
+  
+
+
+.box3{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
