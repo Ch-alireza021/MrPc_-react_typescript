@@ -9,7 +9,7 @@ const AboutUs = Loadable(lazy(() => import("../pages/about_us/AboutUs")));
 const CommonQuestions = Loadable(
   lazy(() => import("../pages/common-questions/common_questions"))
 );
-
+const Terms = Loadable(lazy(() => import("../pages/terms/terms")));
 // Define routes
 export const routes: RouteObject[] = [
   {
@@ -19,6 +19,7 @@ export const routes: RouteObject[] = [
       { path: PATH.HOME, element: <Home /> },
       { path: PATH.ABOUT_US, element: <AboutUs /> },
       { path: PATH.COMMON_QUESTION, element: <CommonQuestions /> },
+      { path: PATH.TERMS, element: <Terms /> },
     ],
   },
 ];
