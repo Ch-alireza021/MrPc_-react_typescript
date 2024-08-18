@@ -13,7 +13,7 @@ const creatId = () => {
       ],
     },
     {
-      text: "امکانات اضافی",
+      text:"پرسش‌های متداول",
       id: creatId(),
       subText: [
         { id: creatId(), to: PATH.COMMON_QUESTION, text: " شیوه ثبت سفارش " },
@@ -22,12 +22,12 @@ const creatId = () => {
       ],
     },
     {
-      text: "پرسش‌های متداول",
+      text: "امکانات اضافی" ,
       id: creatId(),
       subText: [{ id: creatId(), to: "", text: "اسمبل هوشمند" }],
     },
     {
-      text: "پرسش‌های متداول",
+      text: 'حساب کاربری من',
       id: creatId(),
       subText: [
         { id: creatId(), to: PATH.LOGIN, text: " حساب کاربری من " },
