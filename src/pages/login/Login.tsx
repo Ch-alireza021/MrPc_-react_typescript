@@ -6,9 +6,7 @@ import { FormikProps, useFormik } from "formik";
 import * as Yup from "yup";
 import loginStyle from "../../theme/styles/login_style_folder/login_style.module.css";
 import { LogoBtn, Password } from "../../components";
-import { theme } from "../../theme";
 import { PATH } from "../../config";
-
 import {
   Container,
   Content,
@@ -17,7 +15,8 @@ import {
   InputElement,
   InputRoot,
   Wrapper,
-} from "../../theme/styles/login_style_folder/login_style";
+  theme
+} from "../../theme";
 
 interface MyFormsValues {
   username: string;
