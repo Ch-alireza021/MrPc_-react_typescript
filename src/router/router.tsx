@@ -2,6 +2,7 @@ import { createBrowserRouter, RouteObject } from "react-router-dom";
 import { lazy } from "react";
 import { Loadable } from "../layouts/loadable/Loadable";
 import { PATH } from "../config";
+
 // Lazy load components
 const User = Loadable(lazy(() => import("../layouts/user/User")));
 const Home = Loadable(lazy(() => import("../pages/users/home/Home")));
@@ -12,8 +13,10 @@ const CommonQuestions = Loadable(
 const Terms = Loadable(lazy(() => import("../pages/terms/Terms")));
 const Login = Loadable(lazy(() => import("../pages/login/Login")));
 const SignUp = Loadable(lazy(() => import("../pages/sign-up/SignUp")));
-
+const Admin = Loadable(lazy(() => import("../pages/admin/Admin")));
+const AdminDashboard = Loadable(lazy(() => import("../pages/admin/AdminDashboard")));
 // Define routes
+
 export const routes: RouteObject[] = [
   {
     path: PATH.HOME,
@@ -27,7 +30,17 @@ export const routes: RouteObject[] = [
       { path: PATH.SIGN_UP, element: <SignUp /> },
     ],
   },
+  {
+    path:PATH.ADMIN,
+    element: <Admin/>,
+    children: [
+      {
+            index:true,
+            path: PATH.DASHBOARD,
+            element: <AdminDashboard />,
+          },
+        ],
+  },
 ];
 
-// Create the router
 export const router = createBrowserRouter(routes);

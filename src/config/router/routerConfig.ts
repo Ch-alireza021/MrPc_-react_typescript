@@ -5,4 +5,6 @@ export const PATH = {
   COMMON_QUESTION: "common-questions",
   LOGIN: "login",
   SIGN_UP: "sign-up",
+  ADMIN:'admin',
+  DASHBOARD:'dashboard'
 };
