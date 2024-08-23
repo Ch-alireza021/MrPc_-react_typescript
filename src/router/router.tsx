@@ -13,10 +13,13 @@ const CommonQuestions = Loadable(
 const Terms = Loadable(lazy(() => import("../pages/terms/Terms")));
 const Login = Loadable(lazy(() => import("../pages/login/Login")));
 const SignUp = Loadable(lazy(() => import("../pages/sign-up/SignUp")));
-const Admin = Loadable(lazy(() => import("../pages/admin/Admin")));
-const AdminDashboard = Loadable(lazy(() => import("../pages/admin/AdminDashboard")));
-// Define routes
+const Admin = Loadable(lazy(() => import("../pages/admin/Admin"))); 
+const AdminDashboard = Loadable(
+  lazy(() => import("../pages/admin/admin_dashboard/AdminDashboard"))
+);
+const UserViwe = Loadable(lazy(() => import("../pages/admin/users/UserView")));
 
+// Define routes
 export const routes: RouteObject[] = [
   {
     path: PATH.HOME,
@@ -31,15 +34,18 @@ export const routes: RouteObject[] = [
     ],
   },
   {
-    path:PATH.ADMIN,
-    element: <Admin/>,
+    path: PATH.ADMIN,
+    element: <Admin />,
     children: [
       {
-            index:true,
-            path: PATH.DASHBOARD,
-            element: <AdminDashboard />,
-          },
-        ],
+        path: PATH.DASHBOARD,
+        element: <AdminDashboard />,
+      },
+      {
+        path: PATH.USERVIWE,
+        element: <UserViwe />,
+      },
+    ],
   },
 ];
 

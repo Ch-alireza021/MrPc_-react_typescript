@@ -1,8 +1,13 @@
 import { Box } from "@mui/material";
 import { Search as SearchIcon } from "@mui/icons-material";
 import { main_header_style } from "../../../../theme";
+import { FC } from "react";
 const { StyledInputBase, Search } = main_header_style();
-export const MainHeaderSearch = () => {
+
+interface MainHeaderSearchIF {
+  admin: boolean | undefined;
+}
+export const MainHeaderSearch: FC<MainHeaderSearchIF> = ({ admin }) => {
   return (
     <Search>
       <Box
@@ -16,7 +21,7 @@ export const MainHeaderSearch = () => {
       >
         <SearchIcon sx={{ fontSize: "40px" }} />
         <StyledInputBase
-          sx={{ width: "50vw" }}
+          sx={{ width: admin ? "30vw" : "50vw" }}
           placeholder="جستجو ..."
           inputProps={{ "aria-label": "جستجو" }}
         />
