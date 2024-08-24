@@ -4,8 +4,8 @@ export const handleSelectAllClick = (
   event: React.ChangeEvent<HTMLInputElement>,
   rows: { _id: string }[],
   setSelected: {
-    (value: SetStateAction<readonly string[]>): void;
-    (arg0: never[]): void;
+    (value: SetStateAction<string[]>): void;
+    // (arg0: never[]): void;
   }
 ) => {
   if (event.target.checked) {
@@ -19,14 +19,13 @@ export const handleSelectAllClick = (
 export const handleClick = (
   _event: React.MouseEvent<unknown>,
   _id: string,
-  selected: readonly string[],
+  selected: string[],
   setSelected: {
-    (value: SetStateAction<readonly string[]>): void;
-    (arg0: readonly string[]): void;
+    (value: SetStateAction<string[]>): void;
   }
 ) => {
   const selectedIndex = selected?.indexOf(_id);
-  let newSelected: readonly string[] = [];
+  let newSelected:string[] = [];
 
   if (selectedIndex === -1) {
     newSelected = newSelected.concat(selected, _id);

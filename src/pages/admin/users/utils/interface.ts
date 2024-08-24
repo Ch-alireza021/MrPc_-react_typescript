@@ -1,3 +1,5 @@
+import { SetStateAction } from "react";
+
 export interface DataIF {
   lastname: string;
   firstname: string;
@@ -26,4 +28,15 @@ export interface HeadCellIF {
     id: keyof DataIF;
     label: string;
     numeric: boolean;
+  }
+
+  export interface UsersTableCellIF {
+    row: DataIF;
+    selected: string[];
+    setSelected: {
+      (value: SetStateAction<string[]>): void;
+    };
+    isItemSelected: boolean;
+    labelId: string;
+    index: number;
   }
