@@ -2,7 +2,6 @@ import { createBrowserRouter, RouteObject } from "react-router-dom";
 import { lazy } from "react";
 import { Loadable } from "../layouts/loadable/Loadable";
 import { PATH } from "../config";
-
 // Lazy load components
 const User = Loadable(lazy(() => import("../layouts/user/User")));
 const Home = Loadable(lazy(() => import("../pages/users/home/Home")));
@@ -18,6 +17,7 @@ const AdminDashboard = Loadable(
   lazy(() => import("../pages/admin/admin_dashboard/AdminDashboard"))
 );
 const UserViwe = Loadable(lazy(() => import("../pages/admin/users/UserView")));
+const AdminOrdersPage = Loadable(lazy(() => import("../pages/admin/admin_orders/AdminOrdersPage")));
 
 // Define routes
 export const routes: RouteObject[] = [
@@ -44,6 +44,10 @@ export const routes: RouteObject[] = [
       {
         path: PATH.USERVIWE,
         element: <UserViwe />,
+      },
+      {
+        path: PATH.ADMINORDERS,
+        element:<AdminOrdersPage/>,
       },
     ],
   },

@@ -2,9 +2,8 @@ import {
   TrendingUp,
   PermContactCalendar,
   ProductionQuantityLimits,
+  LocalMall
 } from "@mui/icons-material";
-
-
 interface NavItem {
   title: string;
   path: string;
@@ -23,6 +22,11 @@ export const navConfig: NavItem[] = [
     title: "یوزرها",
     path: "/admin/users",
     icon: <PermContactCalendar />,
+  },
+  {
+    title: "سفارش ها",
+    path: "/admin/orders",
+    icon: <LocalMall />,
   },
   {
     title: "محصولات",

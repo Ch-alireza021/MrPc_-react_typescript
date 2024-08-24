@@ -7,5 +7,6 @@ export const PATH = {
   SIGN_UP: "sign-up",
   ADMIN:'admin',
   DASHBOARD:'dashboard',
-  USERVIWE:'users'
+  USERVIWE:'users',
+  ADMINORDERS:'orders',
 };
