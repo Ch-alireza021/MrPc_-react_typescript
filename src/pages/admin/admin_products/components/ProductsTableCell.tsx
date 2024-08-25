@@ -1,10 +1,10 @@
 import { TableRow, TableCell } from "@mui/material";
-import { UsersTableCellIF } from "../utils";
+import { ProductsTableCellIF } from "../utils";
 import { FC } from "react";
 import { productCellData } from "../config";
 
 
-export const ProductsTableCell: FC<UsersTableCellIF> = ({
+export const ProductsTableCell: FC<ProductsTableCellIF> = ({
   row,
   labelId,
   index,
