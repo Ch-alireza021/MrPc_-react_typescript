@@ -11,7 +11,7 @@ export const fNumber = (number: number): string => {
 };
 
 export const fCurrency = (number?: number): string => {
-  const format = number ? numeral(number).format("$0,0.00") : "";
+  const format = number ? numeral(number).format("0,0.00") : "";
   return result(format, ".00");
 };
 

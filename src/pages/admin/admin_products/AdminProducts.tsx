@@ -21,16 +21,19 @@ import {
   productsDataIF,
 } from "./utils";
 import React, { useState } from "react";
+import { Loading } from "../../../components";
 
 const AdminProducts = () => {
-  const [order, setOrder] = React.useState<OrderIF>("desc");
-  const [orderBy, setOrderBy] = React.useState<OrdersOrderBy>("name");
+  const [order, setOrder] = React.useState<OrderIF>("asc");
+  const [orderBy, setOrderBy] = React.useState<OrdersOrderBy>("quantity");
   const [page, setPage] = React.useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = React.useState<number>(5);
-  const { data } = useQuery({
-    queryKey: ["adminProducts"],
-    queryFn: async () => await getProducts(),
+  const { data, isLoading } = useQuery({
+    queryKey: ["adminProducts",order, orderBy, page, rowsPerPage],
+    queryFn: async () =>
+      await getProducts({ order, orderBy, page:page+1, rowsPerPage }),
   });
+  if (isLoading) return <Loading />;
   const rows = data?.data?.products || [];
   const total = data?.total || 0;
   const handleChangePage = (_event: unknown, newPage: number) => {

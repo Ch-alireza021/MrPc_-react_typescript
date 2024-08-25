@@ -2,6 +2,7 @@ import { URL_CATEGORY, URL_SUBCATEGORY } from "../../../../config";
 import { productsDataIF } from "../utils";
 import { HoverReveal } from "../../../../components";
 import { AdminProductImage, CASName } from "../components";
+import { fCurrency, fDate } from "../../../../utils";
 
 export const productCellData = [
   {
@@ -24,11 +25,11 @@ export const productCellData = [
       <CASName {...{ URL: URL_SUBCATEGORY, id: row?.subcategory }} />
     ),
   },
-  { key: "price", render: (row: { price: number }) => row?.price },
+  { key: "price", render: (row: { price: number }) => fCurrency(row?.price) },
   {
     key: "updatedAt",
     render: (row: { updatedAt: string }) =>
-      new Intl.DateTimeFormat("fa-IR").format(new Date(row?.updatedAt)),
+      fDate(row?.updatedAt)
   },
   { key: "quantity", render: (row: { quantity: number }) => row?.quantity },
 ];
