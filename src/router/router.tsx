@@ -18,6 +18,7 @@ const AdminDashboard = Loadable(
 );
 const UserViwe = Loadable(lazy(() => import("../pages/admin/users/UserView")));
 const AdminOrdersPage = Loadable(lazy(() => import("../pages/admin/admin_orders/AdminOrdersPage")));
+const AdminProducts = Loadable(lazy(() => import("../pages/admin/admin_products/AdminProducts")));
 
 // Define routes
 export const routes: RouteObject[] = [
@@ -48,6 +49,10 @@ export const routes: RouteObject[] = [
       {
         path: PATH.ADMINORDERS,
         element:<AdminOrdersPage/>,
+      },
+      {
+        path: PATH.ADMINPRODUCTS,
+        element:<AdminProducts/>,
       },
     ],
   },

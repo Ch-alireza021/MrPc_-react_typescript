@@ -9,4 +9,5 @@ export const PATH = {
   DASHBOARD:'dashboard',
   USERVIWE:'users',
   ADMINORDERS:'orders',
+  ADMINPRODUCTS:'products',
 };

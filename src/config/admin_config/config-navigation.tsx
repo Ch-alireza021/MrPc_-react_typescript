@@ -19,6 +19,11 @@ export const navConfig: NavItem[] = [
     icon: <TrendingUp />,
   },
   {
+    title: "محصولات",
+    path: "/admin/products",
+    icon: <ProductionQuantityLimits />,
+  },
+  {
     title: "یوزرها",
     path: "/admin/users",
     icon: <PermContactCalendar />,
@@ -28,9 +33,5 @@ export const navConfig: NavItem[] = [
     path: "/admin/orders",
     icon: <LocalMall />,
   },
-  {
-    title: "محصولات",
-    path: "/admin/products",
-    icon: <ProductionQuantityLimits />,
-  },
+ 
 ];
