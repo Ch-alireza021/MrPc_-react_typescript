@@ -9,6 +9,8 @@ interface GetProductsIF {
   orderBy: OrdersOrderBy;
   page: number;
   rowsPerPage: number;
+  url: string;
+  req: boolean;
 }
 
 export const getProducts = async ({
@@ -16,11 +18,13 @@ export const getProducts = async ({
   orderBy,
   page,
   rowsPerPage,
+  url,
+  req,
 }: GetProductsIF) => {
   const respons = await api.get(
     `${URL_PRODUCT}?page=${page}&limit=${rowsPerPage}&sort=${
       order === "asc" ? "" : "-"
-    }${orderBy}`
+    }${orderBy}${req ? "&" + url : ""}`
   );
   return respons.data;
 };
