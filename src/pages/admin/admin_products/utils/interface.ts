@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, SetStateAction } from "react";
 
 export interface productsDataIF {
   _id: string;
@@ -27,6 +27,20 @@ export interface EnhancedTablePropsIF {
   orderBy: string;
 }
 
+export interface AdminProductsTableIF {
+  order: OrderIF;
+  orderBy: string;
+  rows: productsDataIF[];
+  setOrderBy: (value: SetStateAction<OrdersOrderBy>) => void;
+  setOrder: (value: SetStateAction<OrderIF>) => void;
+}
+export interface AdminProductsPaginationIF {
+  total: number;
+  rowsPerPage: number;
+  page: number;
+  setRowsPerPage: (value: SetStateAction<number>) => void;
+  setPage: (value: SetStateAction<number>) => void;
+}
 export interface HeadCellIF {
   disablePadding?: boolean;
   id: keyof productsDataIF;
@@ -39,5 +53,3 @@ export interface ProductsTableCellIF {
   labelId: string;
   index: number;
 }
-
-
