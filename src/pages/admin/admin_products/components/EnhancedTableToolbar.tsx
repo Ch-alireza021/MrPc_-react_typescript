@@ -5,8 +5,11 @@ import Toolbar from "@mui/material/Toolbar";
 import { Typography } from "@mui/material";
 import { APSearch } from "./search";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setSearchOff } from "../../../../features";
 export const EnhancedTableToolbar = () => {
   const [isSearch, setIsSearch] = useState<boolean>(false);
+  const dispatch = useDispatch();
   return (
     <Toolbar
       sx={{
@@ -25,7 +28,13 @@ export const EnhancedTableToolbar = () => {
         محصولات
       </Typography>
       {isSearch && <APSearch />}
-      <Tooltip title="Filter list" onClick={() => setIsSearch((pre) => !pre)}>
+      <Tooltip
+        title="Filter list"
+        onClick={() => {
+          if (isSearch===true) dispatch(setSearchOff());
+          setIsSearch((pre) => !pre);
+        }}
+      >
         <IconButton>
           <FilterListIcon />
         </IconButton>

@@ -35,9 +35,19 @@ const searchProducts = createSlice({
     setReq: (state, action: PayloadAction<boolean>) => {
       state.req = action.payload;
     },
+    setSearchOff: () => {
+      return initialState;
+    },
   },
 });
 
-export const { setCategory, setSubcategory, setQuantity, setPrice, setReq } =
-  searchProducts.actions;
+export const {
+  setCategory,
+  setSubcategory,
+  setQuantity,
+  setPrice,
+  setReq,
+  setSearchOff,
+} = searchProducts.actions;
+
 export default searchProducts.reducer;
