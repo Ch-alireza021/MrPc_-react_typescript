@@ -1,41 +1,42 @@
-import * as React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { FormControl, InputLabel, MenuItem, Select, Box } from "@mui/material";
 import { generalGet } from "../../../../../services";
-
-export default function SelectOption({
+import { FC } from "react";
+interface SelectOptionIF {
+  title: string;
+  showValue: string;
+  onChangeSelect: (arg0: string) => void;
+  responseData: string;
+  URL: string;
+}
+export const SelectOption: FC<SelectOptionIF> = ({
   title,
   showValue,
   onChangeSelect,
   responseData,
   URL,
-}) {
-  console.log(showValue);
+}) => {
   // -----------------------------------------------------------
   // GET DATA
+  console.log({ URL });
   const { data: category } = useQuery({
     queryKey: [URL],
     queryFn: () => {
       return generalGet(URL).then((res) => res.data[responseData]);
     },
   });
+
   // -----------------------------------------------------------
 
   return (
-    <Box component="form" noValidate autoComplete="off" sx={{width:'100px'}}>
+    <Box component="form" noValidate autoComplete="off" sx={{ width: "100px" }}>
       <FormControl fullWidth focused>
         <InputLabel
           id="selectInput"
-          sx={{
-            color: "#FF0000",
-            "&:focus-within": {
-              color: "#FF0000",
-            },
-          }}
         >
           {title}
         </InputLabel>
-        <Select 
+        <Select
           color={"primary"}
           sx={{
             "& .MuiInputBase-input": {
@@ -55,7 +56,7 @@ export default function SelectOption({
             },
           }}
         >
-          {category?.map((option) => (
+          {category?.map((option: { _id: string; name: string }) => (
             <MenuItem
               key={option._id}
               value={option._id}
@@ -68,4 +69,4 @@ export default function SelectOption({
       </FormControl>
     </Box>
   );
-}
+};
