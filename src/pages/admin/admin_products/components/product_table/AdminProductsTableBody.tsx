@@ -1,5 +1,5 @@
 import { TableBody } from "@mui/material";
-import { productsDataIF } from "../utils";
+import { productsDataIF } from "../../utils";
 import { ProductsTableCell } from "./ProductsTableCell";
 
 export const AdminProductsTableBody = ({rows}:{rows:productsDataIF[]}) => {

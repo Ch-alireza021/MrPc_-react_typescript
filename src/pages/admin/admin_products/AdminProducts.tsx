@@ -1,22 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import { getProducts } from "../../../services";
 import { Box, Paper, TableContainer } from "@mui/material";
-import {
-  AdminProductsPagination,
-  AdminProductsTable,
-  EnhancedTableToolbar,
-} from "./components";
-import { OrderIF, OrdersOrderBy } from "./utils";
+import { OrderIF, OrdersOrderBy, SelectHeader } from "./utils";
 import React, { useEffect } from "react";
 import { Loading } from "../../../components";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../features/rootReducers";
+import { AdminProductsHeaderComp, EnhancedTableToolbar, AdminProductsTable, AdminProductsPagination } from "./components";
 
 const AdminProducts = () => {
   const [order, setOrder] = React.useState<OrderIF>("asc");
   const [orderBy, setOrderBy] = React.useState<OrdersOrderBy>("quantity");
   const [page, setPage] = React.useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = React.useState<number>(5);
+  const [selectComp, setSelectComp] = React.useState<SelectHeader>('table');
   const formValues = useSelector((state: RootState) => state?.sPState);
   const url = Object.entries(formValues)
     .filter(([key, value]) => key !== "req" && value)
@@ -52,6 +49,7 @@ const AdminProducts = () => {
 
   return (
     <Box sx={{ width: "100%" }}>
+      <AdminProductsHeaderComp {...{selectComp, setSelectComp}}/>
       <Paper sx={{ width: "100%", mb: 2, borderRadius: "1rem" }}>
         <EnhancedTableToolbar />
         <TableContainer sx={{ padding: "1rem" }}>

@@ -43,4 +43,10 @@ import {  HeadCellIF } from "./interface";
       disablePadding: false,
       label: " موجودی  ",
     },
+    {
+      id: "edit",
+      numeric: false,
+      disablePadding: false,
+      label: " ویرایش  ",
+    },
   ];

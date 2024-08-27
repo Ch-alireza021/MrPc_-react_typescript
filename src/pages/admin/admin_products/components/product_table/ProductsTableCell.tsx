@@ -1,7 +1,7 @@
 import { TableRow, TableCell } from "@mui/material";
-import { ProductsTableCellIF } from "../utils";
+import { ProductsTableCellIF } from "../../utils";
 import { FC } from "react";
-import { productCellData } from "../config";
+import { productCellData } from "../../config";
 
 
 export const ProductsTableCell: FC<ProductsTableCellIF> = ({

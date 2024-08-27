@@ -3,7 +3,7 @@ import { FC } from "react";
 import {
   AdminProductsTableIF,
   handleRequestSort,
-} from "../utils";
+} from "../../utils";
 import { AdminProductsHeaders } from "./AdminProductsHeaders";
 import { AdminProductsTableBody } from "./AdminProductsTableBody";
 

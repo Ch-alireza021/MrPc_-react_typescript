@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Box } from "@mui/material";
-import { URL_BACKEND_THUMBNAILS } from "../../../../config";
-import { productsDataIF } from "../utils";
+import { URL_BACKEND_THUMBNAILS } from "../../../../../config";
+import { productsDataIF } from "../../utils";
 import {
   AdminProductImageCustomBox,
   AdminProductImageImageBox,
-} from "../../../../theme";
+} from "../../../../../theme";
 export const AdminProductImage = ({ row }: { row: productsDataIF }) => {
   const [isHovered, setIsHovered] = useState(false);
 

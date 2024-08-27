@@ -1,5 +1,5 @@
 import { TablePagination } from "@mui/material";
-import { AdminProductsPaginationIF, handleChangeRowsPerPage } from "../utils";
+import { AdminProductsPaginationIF, handleChangeRowsPerPage } from "../../utils";
 import { FC } from "react";
 
 export const AdminProductsPagination: FC<AdminProductsPaginationIF> = ({

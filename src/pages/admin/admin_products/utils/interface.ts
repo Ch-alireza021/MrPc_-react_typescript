@@ -9,6 +9,7 @@ export interface productsDataIF {
   price: number;
   updatedAt: string;
   quantity: number;
+  edit?: ReactNode;
 }
 export type OrdersOrderBy =
   | "name"
@@ -52,4 +53,10 @@ export interface ProductsTableCellIF {
   row: productsDataIF;
   labelId: string;
   index: number;
+}
+
+export type SelectHeader = "table" | "cart" | "addNew";
+export interface ShowHeaderIF {
+  text: string;
+  key: SelectHeader;
 }

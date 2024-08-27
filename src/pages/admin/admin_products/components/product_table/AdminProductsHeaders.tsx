@@ -5,7 +5,7 @@ import {
   TableSortLabel,
   Box,
 } from "@mui/material";
-import { EnhancedTablePropsIF, OrdersOrderBy, header } from "../utils";
+import { EnhancedTablePropsIF, OrdersOrderBy, header } from "../../utils";
 import { visuallyHidden } from "@mui/utils";
 
 export const AdminProductsHeaders = (props: EnhancedTablePropsIF) => {
