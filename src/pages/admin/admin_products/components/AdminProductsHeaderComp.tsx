@@ -8,17 +8,17 @@ export const AdminProductsHeaderComp = ({
   selectComp: SelectHeader;
   setSelectComp(arg0: SelectHeader): void;
 }) => {
-  const orders: ShowHeaderIF[] = [
+  const headerrows: ShowHeaderIF[] = [
     { text: " جدول محصولات", key: "table" },
-    { text: "  کارت محصولات", key: "cart" },
+    { text: "  کارت محصولات", key: "card" },
     { text: "اضافه کردن محصول جدید", key: "addNew" },
   ];
 
   return (
     <Box sx={{ display: "flex", gap: 2, paddingBottom: "1rem" }}>
-      {orders.map((order) => (
+      {headerrows.map((order) => (
         <Button
-          key={order.key ? "checked" : "unchecked"}
+          key={order.key }
           variant="contained"
           color="success"
           sx={{

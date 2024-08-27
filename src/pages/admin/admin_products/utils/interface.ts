@@ -55,8 +55,20 @@ export interface ProductsTableCellIF {
   index: number;
 }
 
-export type SelectHeader = "table" | "cart" | "addNew";
+export type SelectHeader = "table" | "card" | "addNew";
 export interface ShowHeaderIF {
   text: string;
   key: SelectHeader;
+}
+export interface ProductsTableComponentsIF {
+  order: OrderIF;
+  setOrderBy: (value: SetStateAction<OrdersOrderBy>) => void;
+  orderBy: string;
+  setOrder: (value: SetStateAction<OrderIF>) => void;
+  page: number;
+  setPage: (value: SetStateAction<number>) => void;
+  rowsPerPage: number;
+  setRowsPerPage: (value: SetStateAction<number>) => void;
+  rows: productsDataIF[];
+  total: number;
 }

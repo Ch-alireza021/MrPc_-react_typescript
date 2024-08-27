@@ -1,19 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
 import { getProducts } from "../../../services";
-import { Box, Paper, TableContainer } from "@mui/material";
+import { Box } from "@mui/material";
 import { OrderIF, OrdersOrderBy, SelectHeader } from "./utils";
 import React, { useEffect } from "react";
 import { Loading } from "../../../components";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../features/rootReducers";
-import { AdminProductsHeaderComp, EnhancedTableToolbar, AdminProductsTable, AdminProductsPagination } from "./components";
+import { AddNewProduct, AdminProductsHeaderComp, ProductsTableComponents } from "./components";
+import { AdminProductsCardComp } from "./components/products_card";
 
 const AdminProducts = () => {
   const [order, setOrder] = React.useState<OrderIF>("asc");
   const [orderBy, setOrderBy] = React.useState<OrdersOrderBy>("quantity");
   const [page, setPage] = React.useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = React.useState<number>(5);
-  const [selectComp, setSelectComp] = React.useState<SelectHeader>('table');
+  const [selectComp, setSelectComp] = React.useState<SelectHeader>("table");
   const formValues = useSelector((state: RootState) => state?.sPState);
   const url = Object.entries(formValues)
     .filter(([key, value]) => key !== "req" && value)
@@ -46,21 +47,28 @@ const AdminProducts = () => {
   const rows = data?.data?.products || [];
   const total = data?.total || 0;
   // --------------------------------------------------
-
+console.log({selectComp})
   return (
     <Box sx={{ width: "100%" }}>
-      <AdminProductsHeaderComp {...{selectComp, setSelectComp}}/>
-      <Paper sx={{ width: "100%", mb: 2, borderRadius: "1rem" }}>
-        <EnhancedTableToolbar />
-        <TableContainer sx={{ padding: "1rem" }}>
-          <AdminProductsTable
-            {...{ order, orderBy, setOrderBy, setOrder, rows }}
-          />
-        </TableContainer>
-        <AdminProductsPagination
-          {...{ setPage, total, rowsPerPage, page, setRowsPerPage }}
+      <AdminProductsHeaderComp {...{ selectComp, setSelectComp }} />
+      {selectComp === "table" && (
+        <ProductsTableComponents
+          {...{
+            order,
+            orderBy,
+            setOrderBy,
+            setOrder,
+            rows,
+            setPage,
+            total,
+            rowsPerPage,
+            page,
+            setRowsPerPage,
+          }}
         />
-      </Paper>
+      )}
+      {selectComp === "card" && <AdminProductsCardComp />}
+      {selectComp === "addNew" && <AddNewProduct />}
     </Box>
   );
 };
