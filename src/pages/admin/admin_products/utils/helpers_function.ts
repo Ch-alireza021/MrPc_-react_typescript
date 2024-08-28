@@ -1,9 +1,10 @@
 import { ChangeEvent, SetStateAction } from "react";
 import { OrderIF, OrdersOrderBy } from "./interface";
+export type setPage= (value: SetStateAction<number>)=> void
 export const handleChangeRowsPerPage = (
   event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   setRowsPerPage: { (value: SetStateAction<number>): void },
-  setPage: { (value: SetStateAction<number>): void }
+  setPage:setPage
 ) => {
   setRowsPerPage(parseInt(event.target.value, 10));
   setPage(0);

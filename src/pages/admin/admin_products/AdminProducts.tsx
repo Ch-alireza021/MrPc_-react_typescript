@@ -6,15 +6,19 @@ import React, { useEffect } from "react";
 import { Loading } from "../../../components";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../features/rootReducers";
-import { AddNewProduct, AdminProductsHeaderComp, ProductsTableComponents } from "./components";
+import {
+  AddNewProduct,
+  AdminProductsHeaderComp,
+  ProductsTableComponents,
+} from "./components";
 import { AdminProductsCardComp } from "./components/products_card";
 
 const AdminProducts = () => {
   const [order, setOrder] = React.useState<OrderIF>("asc");
   const [orderBy, setOrderBy] = React.useState<OrdersOrderBy>("quantity");
   const [page, setPage] = React.useState<number>(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState<number>(5);
   const [selectComp, setSelectComp] = React.useState<SelectHeader>("table");
+  const [rowsPerPage, setRowsPerPage] = React.useState<number>(5);
   const formValues = useSelector((state: RootState) => state?.sPState);
   const url = Object.entries(formValues)
     .filter(([key, value]) => key !== "req" && value)
@@ -23,6 +27,13 @@ const AdminProducts = () => {
   useEffect(() => {
     setPage(0);
   }, [rowsPerPage, formValues?.req]);
+  useEffect(() => {
+    if (selectComp === "card") {
+      setRowsPerPage(30);
+    }else if (selectComp === "table") {
+      setRowsPerPage(5);
+    }
+  }, [selectComp]);
   // --------------------------------------------------
   const { data, isLoading } = useQuery({
     queryKey: [
@@ -46,8 +57,9 @@ const AdminProducts = () => {
   if (isLoading) return <Loading />;
   const rows = data?.data?.products || [];
   const total = data?.total || 0;
+  const total_pages = data?.total_pages || 0;
+
   // --------------------------------------------------
-console.log({selectComp})
   return (
     <Box sx={{ width: "100%" }}>
       <AdminProductsHeaderComp {...{ selectComp, setSelectComp }} />
@@ -67,7 +79,9 @@ console.log({selectComp})
           }}
         />
       )}
-      {selectComp === "card" && <AdminProductsCardComp />}
+      {selectComp === "card" && (
+        <AdminProductsCardComp {...{ rows, page, setPage, total_pages }} />
+      )}
       {selectComp === "addNew" && <AddNewProduct />}
     </Box>
   );
