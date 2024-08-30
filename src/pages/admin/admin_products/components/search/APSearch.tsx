@@ -1,10 +1,9 @@
 import { SelectOption } from "./SelectOption";
-import { Box, Button, TextField } from "@mui/material";
+import { Button, Stack, TextField } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { setPrice, setQuantity, setReq } from "../../../../../features";
 import { RootState } from "../../../../../features/rootReducers";
-import searchStyle from "./search.module.css";
-import { buttonStyles, styleTextField } from "../../utils";
+import { APSearchStackStyle, buttonStyles, styleTextField } from "../../utils";
 import { searchSelectOptionDatas, searchTextFeildData } from "../../config";
 // ---------------------------------------
 // APSearch ==> admin products search
@@ -22,10 +21,9 @@ export const APSearch = ({
   };
   return (
     <>
-      <Box
-        className={
-          isOpen ? searchStyle?.containerIsOpen : searchStyle.container
-        }
+      <Stack
+        direction={"row"}
+        sx={APSearchStackStyle(isOpen)}
         paddingBottom={paddingBottom && isOpen ? paddingBottom : 0}
       >
         {searchSelectOptionDatas?.map((selection) => (
@@ -67,7 +65,7 @@ export const APSearch = ({
         >
           جست و جو
         </Button>
-      </Box>
+      </Stack>
     </>
   );
 };

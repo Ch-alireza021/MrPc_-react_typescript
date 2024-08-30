@@ -1,6 +1,5 @@
-import { Button, Box } from "@mui/material";
+import { Button } from "@mui/material";
 import { buttonStyles } from "../../utils";
-import searchStyle from "./search.module.css";
 import { SetStateAction } from "react";
 // -----------------------------------------------
 //      APSBtn ==> Admin products search button
@@ -23,12 +22,7 @@ export const APSBtn = ({
         setIsOpen((pre) => !pre);
       }}
     >
-      <Box className={isOpen ? searchStyle?.showText : searchStyle.hidText}>
-        لغو
-      </Box>
-      <Box className={isOpen ? searchStyle?.hidText : searchStyle.showText}>
-        جست و جو
-      </Box>
+        {isOpen ? "لغو" : "جست و جو"}
     </Button>
   );
 };

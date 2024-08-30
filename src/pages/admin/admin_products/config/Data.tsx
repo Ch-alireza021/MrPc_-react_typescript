@@ -1,5 +1,5 @@
 import { URL_CATEGORY, URL_SUBCATEGORY } from "../../../../config";
-import { productsDataIF } from "../utils";
+import { productsDataIF, SearchSelectOptionDatasIF, ShowHeaderIF } from "../utils";
 import { HoverReveal } from "../../../../components";
 import { AdminProductImage } from "../components/product_table";
 import { fCurrency, fDate } from "../../../../utils";
@@ -35,7 +35,7 @@ export const productCellData = [
   { key: "quantity", render: (row: { quantity: number }) => row?.quantity },
   { key: "edit", render: (row: productsDataIF) => <APEBtn {...{ row }} /> },
 ];
-
+// --------------------------------------------
 export const searchTextFeildData = [
   {
     id: "quantity",
@@ -46,14 +46,7 @@ export const searchTextFeildData = [
     label: "قیمت",
   },
 ];
-
-interface SearchSelectOptionDatasIF {
-  title: string;
-  URL: (formValues: { category?: string }) => string;
-  responseData: string;
-  showValue: "category" | "subcategory";
-  onChange: (value: string, dispatch: (arg0: any) => void) => void;
-}
+// --------------------------------------------
 export const searchSelectOptionDatas: SearchSelectOptionDatasIF[] = [
   {
     title: "دسته بندی",
@@ -79,4 +72,11 @@ export const searchSelectOptionDatas: SearchSelectOptionDatasIF[] = [
       dispatch(setSubcategory(value));
     },
   },
+];
+// --------------------------------------------
+
+export const headerrows: ShowHeaderIF[] = [
+  { text: " جدول محصولات", key: "table" },
+  { text: "  کارت محصولات", key: "card" },
+  { text: "اضافه کردن محصول جدید", key: "addNew" },
 ];
