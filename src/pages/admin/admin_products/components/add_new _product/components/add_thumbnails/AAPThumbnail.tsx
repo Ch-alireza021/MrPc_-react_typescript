@@ -1,15 +1,15 @@
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { Box, Button } from "@mui/material";
 import { buttonStyles } from "../../../../utils";
-import { handleImageChange, VisuallyHiddenInput } from "../../utils";
+import { handleImageChange, handleThumbnailChange, VisuallyHiddenInput } from "../../utils";
 import { FormikHelpers, FormikProps } from "formik";
 import { ValuesIF } from "../../utils/interface";
-import { AAPImagesSlider } from "./AAPImageSlider";
+import { AAPIHover } from "../add_images/AAPIHover";
 interface AddImagesProps {
   formik: FormikProps<ValuesIF> & FormikHelpers<ValuesIF>;
 }
 
-export const AddImages: React.FC<AddImagesProps> = ({ formik }) => {
+export const AAPThumbnail: React.FC<AddImagesProps> = ({ formik }) => {
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
       <Button
@@ -18,16 +18,15 @@ export const AddImages: React.FC<AddImagesProps> = ({ formik }) => {
         component="label"
         startIcon={<CloudUploadIcon />}
       >
-        تصویر کالا
+        تصویر کوچک کالا
         <VisuallyHiddenInput
-          id="images"
+          id="thumbnail"
           type="file"
-          multiple
-          name="images"
-          onChange={(event) => handleImageChange(event, formik)}
+          name="thumbnail"
+          onChange={(event) => handleThumbnailChange(event, formik)}
         />
       </Button>
-      <AAPImagesSlider {...{ formik }} />
+      <AAPIHover {...{ image: formik?.values?.thumbnail }} />
     </Box>
   );
 };

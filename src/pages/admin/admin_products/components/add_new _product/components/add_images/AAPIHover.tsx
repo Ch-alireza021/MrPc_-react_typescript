@@ -1,7 +1,7 @@
 import { Box, CardMedia, Popover } from "@mui/material";
 import React from "react";
 
-export const AAPIHover = ({ image }: { image: File }) => {
+export const AAPIHover = ({ image }: { image: File|null }) => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
 
   const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -16,7 +16,7 @@ export const AAPIHover = ({ image }: { image: File }) => {
 
   return (
     <div>
-      <Box
+      {image && <><Box
         sx={{
           overflow: "hidden",
           width: "100px",
@@ -32,10 +32,8 @@ export const AAPIHover = ({ image }: { image: File }) => {
           onMouseLeave={handlePopoverClose}
           component="img"
           image={URL.createObjectURL(image)}
-          alt="add image"
-        />
-      </Box>
-      <Popover
+          alt="add image" />
+      </Box><Popover
         id="mouse-over-popover"
         sx={{ pointerEvents: "none" }}
         open={open}
@@ -51,16 +49,15 @@ export const AAPIHover = ({ image }: { image: File }) => {
         onClose={handlePopoverClose}
         disableRestoreFocus
       >
-        <CardMedia
-          sx={{
-            width: "300px",
-            height: "300px",
-          }}
-          component="img"
-          image={URL.createObjectURL(image)}
-          alt="add image"
-        />
-      </Popover>
+          <CardMedia
+            sx={{
+              width: "300px",
+              height: "300px",
+            }}
+            component="img"
+            image={URL.createObjectURL(image)}
+            alt="add image" />
+        </Popover></>}
     </div>
   );
 };

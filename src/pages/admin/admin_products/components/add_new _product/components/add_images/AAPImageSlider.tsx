@@ -16,18 +16,18 @@ export const AAPImagesSlider = ({
 }: {
   formik: FormikProps<ValuesIF>;
 }) => {
-    const size=useWindowSize()
+  const size = useWindowSize();
   return (
-    <Box width={'40vw'} >
+    <Box width={`${((size.width - 240) * 65) / size.width}vw`}>
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={10}
-        slidesPerView={size.width/300}
+        slidesPerView={size.width / 300}
         scrollbar={{ draggable: true }}
       >
         {formik?.values?.images?.map((image, index) => (
           <SwiperSlide key={index}>
-           <AAPIHover {...{image}}/>
+            <AAPIHover {...{ image }} />
           </SwiperSlide>
         ))}
       </Swiper>

@@ -1,5 +1,5 @@
 import { Box, Button, Card } from "@mui/material";
-import { AddImages } from "./components";
+import { AAPThumbnail, AddImages } from "./components";
 import { FormikProps, useFormik } from "formik";
 import { handleFormikSubmite, initialValues, validationSchema } from "./utils";
 import { ValuesIF } from "./utils/interface";
@@ -21,6 +21,7 @@ export const AddNewProduct = () => {
         gap={2}
       >
           <AddImages {...{formik}} />
+          <AAPThumbnail {...{formik}} />
         <Button type="submit">ذخیره</Button>
       </Box>
     </Card>

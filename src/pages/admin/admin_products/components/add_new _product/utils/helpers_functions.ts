@@ -16,3 +16,17 @@ export const handleImageChange = (
     }
   }
 };
+export const handleThumbnailChange = (
+  event: ChangeEvent<HTMLInputElement>,
+  formik: FormikHelpers<ValuesIF>
+) => {
+  const fileList = event.target.files;
+  if (fileList) {
+    const imagesArray = Array.from(fileList).filter((file) =>
+      file.type.startsWith("image/")
+    );
+    if (imagesArray.length > 0) {
+      formik.setFieldValue("thumbnail", imagesArray?.[0]);
+    }
+  }
+};
