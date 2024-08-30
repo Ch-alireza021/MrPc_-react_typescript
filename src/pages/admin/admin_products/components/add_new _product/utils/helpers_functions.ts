@@ -1,9 +1,10 @@
 import { ChangeEvent } from "react";
-import { FormikValues, FormikHelpers } from "formik";
+import { FormikHelpers } from "formik";
+import { ValuesIF } from "./interface";
 
 export const handleImageChange = (
   event: ChangeEvent<HTMLInputElement>,
-  formik: FormikHelpers<FormikValues>
+  formik: FormikHelpers<ValuesIF>
 ) => {
   const fileList = event.target.files;
   if (fileList) {

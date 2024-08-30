@@ -2,13 +2,14 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { Button, CardMedia } from "@mui/material";
 import { buttonStyles } from "../../../../utils";
 import { handleImageChange, VisuallyHiddenInput } from "../../utils";
-import { FormikHelpers, FormikValues } from "formik";
+import { FormikHelpers, FormikProps } from "formik";
+import { ValuesIF } from "../../utils/interface";
 
-export const AddImages = ({
-  formik,
-}: {
-  formik: FormikValues & FormikHelpers<FormikValues>;
-}) => {
+interface AddImagesProps {
+  formik: FormikProps<ValuesIF> & FormikHelpers<ValuesIF>;
+}
+
+export const AddImages: React.FC<AddImagesProps> = ({ formik }) => {
   console.log("value", formik?.values);
   return (
     <>

@@ -5,11 +5,12 @@ import { handleFormikSubmite, initialValues, validationSchema } from "./utils";
 import { ValuesIF } from "./utils/interface";
 
 export const AddNewProduct = () => {
-  const formik: FormikProps<ValuesIF> = useFormik({
+  const formik: FormikProps<ValuesIF> = useFormik<ValuesIF>({
     initialValues,
     onSubmit: async (values) => handleFormikSubmite(values),
     validationSchema,
   });
+
   return (
     <Card sx={{ padding: "1rem" }}>
       <Box
@@ -20,10 +21,14 @@ export const AddNewProduct = () => {
         gap={2}
       >
         <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-          <AddImages {...{ formik }} />
+          <AddImages {...{formik}} />
         </Box>
         <Button type="submit">ذخیره</Button>
       </Box>
     </Card>
   );
 };
+
+
+
+
