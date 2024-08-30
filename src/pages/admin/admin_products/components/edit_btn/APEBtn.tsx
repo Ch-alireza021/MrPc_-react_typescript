@@ -14,7 +14,7 @@ export const APEBtn = (props: { row: productsDataIF }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  console.log(props.row);
+  
 
   return (
     <Button

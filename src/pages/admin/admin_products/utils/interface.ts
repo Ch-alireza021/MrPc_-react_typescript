@@ -72,3 +72,11 @@ export interface ProductsTableComponentsIF {
   rows: productsDataIF[];
   total: number;
 }
+// --------------------------------------------
+export interface SearchSelectOptionDatasIF {
+  title: string;
+  URL: (formValues: { category?: string }) => string;
+  responseData: string;
+  showValue: "category" | "subcategory";
+  onChange: (value: string, dispatch: (arg0: any) => void) => void;
+}
