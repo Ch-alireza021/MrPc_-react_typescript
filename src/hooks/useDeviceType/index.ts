@@ -1,2 +1,1 @@
-export * from './use_pathname'
 export * from './useDeviceType'
