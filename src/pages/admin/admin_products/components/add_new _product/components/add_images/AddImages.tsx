@@ -1,10 +1,10 @@
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import { Button, CardMedia } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { buttonStyles } from "../../../../utils";
 import { handleImageChange, VisuallyHiddenInput } from "../../utils";
 import { FormikHelpers, FormikProps } from "formik";
 import { ValuesIF } from "../../utils/interface";
-
+import { AAPImagesSlider } from "./AAPImageSlider";
 interface AddImagesProps {
   formik: FormikProps<ValuesIF> & FormikHelpers<ValuesIF>;
 }
@@ -12,7 +12,7 @@ interface AddImagesProps {
 export const AddImages: React.FC<AddImagesProps> = ({ formik }) => {
   console.log("value", formik?.values);
   return (
-    <>
+    <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
       <Button
         sx={buttonStyles}
         variant="contained"
@@ -28,21 +28,7 @@ export const AddImages: React.FC<AddImagesProps> = ({ formik }) => {
           onChange={(event) => handleImageChange(event, formik)}
         />
       </Button>
-      {formik?.values?.images?.map(
-        (image: Blob | MediaSource, index: number) => (
-          <CardMedia
-            key={index}
-            sx={{
-              width: "100px",
-              height: "auto",
-              maxHeight: "60px",
-            }}
-            component="img"
-            image={URL.createObjectURL(image)}
-            alt="add image"
-          />
-        )
-      )}
-    </>
+      <AAPImagesSlider {...{ formik }} />
+    </Box>
   );
 };

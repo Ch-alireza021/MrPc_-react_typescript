@@ -20,9 +20,7 @@ export const AddNewProduct = () => {
         gridTemplateColumns={`repeat(2, 1fr)`}
         gap={2}
       >
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
           <AddImages {...{formik}} />
-        </Box>
         <Button type="submit">ذخیره</Button>
       </Box>
     </Card>
