@@ -1,15 +1,7 @@
-import IconButton from "@mui/material/IconButton";
-import Tooltip from "@mui/material/Tooltip";
-import FilterListIcon from "@mui/icons-material/FilterList";
 import Toolbar from "@mui/material/Toolbar";
 import { Typography } from "@mui/material";
-import { APSearch } from "../search";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setSearchOff } from "../../../../../features";
+
 export const EnhancedTableToolbar = () => {
-  const [isSearch, setIsSearch] = useState<boolean>(false);
-  const dispatch = useDispatch();
   return (
     <Toolbar
       sx={{
@@ -27,18 +19,7 @@ export const EnhancedTableToolbar = () => {
       >
         محصولات
       </Typography>
-      {isSearch && <APSearch />}
-      <Tooltip
-        title="Filter list"
-        onClick={() => {
-          if (isSearch===true) dispatch(setSearchOff());
-          setIsSearch((pre) => !pre);
-        }}
-      >
-        <IconButton>
-          <FilterListIcon />
-        </IconButton>
-      </Tooltip>
+     
     </Toolbar>
   );
 };
