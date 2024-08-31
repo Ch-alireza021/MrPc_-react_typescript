@@ -33,6 +33,7 @@ export const APSearch = ({
             URL={selection?.URL(formValues)}
             responseData={selection?.responseData}
             showValue={formValues[selection?.showValue]}
+            req={isOpen}
             onChangeSelect={(value) => {
               selection?.onChange(value, dispatch);
             }}

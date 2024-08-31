@@ -20,7 +20,7 @@ export const SelectOption: FC<SelectOptionIF> = ({
   onChangeSelect,
   responseData,
   URL,
-  req = true,
+  req,
   addProduct = false,
 }) => {
   const { data: category } = useQuery({

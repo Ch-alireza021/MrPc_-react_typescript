@@ -1,12 +1,16 @@
-import { FormikProps } from "formik";
+import { FormikHelpers, FormikProps } from "formik";
 
 export interface ValuesIF {
   images: File[];
   thumbnail: File | null;
-  productName: string | null;
-  quantity: number | null;
-  price: number | null;
-  brand: string | null;
+  productName: string;
+  quantity: number | "";
+  price: number | "";
+  brand: string;
+  category: string;
+  subcategory: string;
+  addSubcategory: string;
+  addCategory: string;
 }
 
 export type AAPTPropsData = {
@@ -17,4 +21,13 @@ export type AAPTPropsData = {
 export interface AAPTextfeildPropsIF {
   formik: FormikProps<ValuesIF>;
   data: { name: keyof ValuesIF; label: string; type: string };
+}
+
+export interface AddSelectOptionDatasIF {
+  title: string;
+  URL: (category?: string) => string;
+  responseData: string;
+  showValue: "category" | "subcategory";
+  onChange: (value: string, formik: FormikHelpers<ValuesIF>) => void;
+  id: "addSubcategory" | "addCategory";
 }
