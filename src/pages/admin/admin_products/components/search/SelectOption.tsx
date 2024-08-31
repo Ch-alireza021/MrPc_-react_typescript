@@ -10,6 +10,8 @@ interface SelectOptionIF {
   onChangeSelect: (arg0: string) => void;
   responseData: string;
   URL: string;
+  req?: boolean;
+  addProduct?: boolean;
 }
 
 export const SelectOption: FC<SelectOptionIF> = ({
@@ -18,31 +20,41 @@ export const SelectOption: FC<SelectOptionIF> = ({
   onChangeSelect,
   responseData,
   URL,
+  req = true,
+  addProduct = false,
 }) => {
   const { data: category } = useQuery({
     queryKey: [URL],
     queryFn: () => generalGet(URL).then((res) => res.data[responseData]),
+    enabled: req,
   });
 
   return (
-    <Box component="form" noValidate autoComplete="off" sx={{ minWidth: "100px" }}>
+    <Box sx={{ minWidth: "100px" }}>
       <TextField
         id="outlined-select"
         select
         label={title}
         value={showValue}
         onChange={(event) => onChangeSelect(event.target.value)}
-        sx={{ minWidth: "150px", ...styleTextField }}
+        sx={{ minWidth:addProduct? '100%':"150px", ...styleTextField,bgcolor:addProduct?'#EFEFEF':''}}
       >
-        {category && category.length > 0 ? (
+        {addProduct && (
+          <MenuItem value="addNew" sx={{ ...styleTextField }}>
+            اضافه کردن
+          </MenuItem>
+        )}
+        {category &&
+          category.length > 0 &&
           category.map((option: { _id: string; name: string }) => (
-            <MenuItem key={option._id} value={option._id}    sx={{ ...styleTextField }}>
+            <MenuItem
+              key={option._id}
+              value={option._id}
+              sx={{ ...styleTextField }}
+            >
               {option.name}
             </MenuItem>
-          ))
-        ) : (
-          <MenuItem disabled>No options available</MenuItem>
-        )}
+          ))}
       </TextField>
     </Box>
   );
