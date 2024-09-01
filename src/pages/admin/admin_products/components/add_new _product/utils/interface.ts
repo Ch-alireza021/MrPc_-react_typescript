@@ -11,6 +11,7 @@ export interface ValuesIF {
   subcategory: string;
   addSubcategory: string;
   addCategory: string;
+  description:string
 }
 
 export type AAPTPropsData = {

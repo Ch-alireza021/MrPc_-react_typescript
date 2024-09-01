@@ -11,4 +11,5 @@ export const initialValues: ValuesIF = {
   subcategory: "",
   addSubcategory: "",
   addCategory: "",
+  description:''
 };

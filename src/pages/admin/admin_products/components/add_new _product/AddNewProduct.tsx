@@ -4,12 +4,12 @@ import {
   AAPTextfeild,
   AAPThumbnail,
   AddImages,
+  MyEditor,
 } from "./components";
 import { FormikProps, useFormik } from "formik";
 import { handleFormikSubmite, initialValues, validationSchema } from "./utils";
 import { ValuesIF } from "./utils/interface";
 import { textFieldData } from "./config";
-import { MyEditor } from "./components/ckEditor/MyEditor";
 export const AddNewProduct = () => {
   const formik: FormikProps<ValuesIF> = useFormik<ValuesIF>({
     initialValues,
@@ -34,7 +34,7 @@ export const AddNewProduct = () => {
           ))}
           <AAPCASComp {...{ formik }} />
           <Grid item xs={12} >
-            <MyEditor />
+            <MyEditor {...{ formik }} />
           </Grid>
           <Button type="submit">ذخیره</Button>
         </Grid>
