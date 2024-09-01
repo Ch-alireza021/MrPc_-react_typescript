@@ -48,7 +48,7 @@ export const AdminProductsHeaderComp = ({
           </Button>
         ))}
         {windowSize.width >= 1300 && <APSearch {...{ isOpen }} />}
-        <APSBtn {...{ isOpen, setIsOpen }} />
+        {selectComp !== "addNew" && <APSBtn {...{ isOpen, setIsOpen }} />}
       </Stack>
       {windowSize.width < 1300 && (
         <APSearch {...{ isOpen, paddingBottom: "1rem" }} />
