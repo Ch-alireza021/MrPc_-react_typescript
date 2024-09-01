@@ -1,9 +1,15 @@
 import { Box, Button, Card, Grid } from "@mui/material";
-import { AAPTextfeild, AAPThumbnail, AddImages } from "./components";
+import {
+  AAPCASComp,
+  AAPTextfeild,
+  AAPThumbnail,
+  AddImages,
+} from "./components";
 import { FormikProps, useFormik } from "formik";
 import { handleFormikSubmite, initialValues, validationSchema } from "./utils";
 import { ValuesIF } from "./utils/interface";
 import { textFieldData } from "./config";
+import { MyEditor } from "./components/ckEditor/MyEditor";
 export const AddNewProduct = () => {
   const formik: FormikProps<ValuesIF> = useFormik<ValuesIF>({
     initialValues,
@@ -26,6 +32,10 @@ export const AddNewProduct = () => {
               <AAPTextfeild {...{ formik, data }} />
             </Grid>
           ))}
+          <AAPCASComp {...{ formik }} />
+          <Grid item xs={12} >
+            <MyEditor />
+          </Grid>
           <Button type="submit">ذخیره</Button>
         </Grid>
       </Box>
