@@ -13,7 +13,8 @@ import { textFieldData } from "./config";
 export const AddNewProduct = () => {
   const formik: FormikProps<ValuesIF> = useFormik<ValuesIF>({
     initialValues,
-    onSubmit: async (values) => handleFormikSubmite(values),
+    onSubmit: (values, { resetForm }) =>
+      handleFormikSubmite(values, { resetForm }),
     validationSchema,
   });
 
@@ -33,7 +34,7 @@ export const AddNewProduct = () => {
             </Grid>
           ))}
           <AAPCASComp {...{ formik }} />
-          <Grid item xs={12} >
+          <Grid item xs={12}>
             <MyEditor {...{ formik }} />
           </Grid>
           <Button type="submit">ذخیره</Button>

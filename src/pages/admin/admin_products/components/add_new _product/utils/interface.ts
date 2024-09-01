@@ -9,8 +9,8 @@ export interface ValuesIF {
   brand: string;
   category: string;
   subcategory: string;
-  addSubcategory: string;
-  addCategory: string;
+  addSubcategory?: string;
+  addCategory?: string;
   description:string
 }
 
