@@ -10,14 +10,17 @@ import { FormikProps, useFormik } from "formik";
 import { handleFormikSubmite, initialValues, validationSchema } from "./utils";
 import { ValuesIF } from "./utils/interface";
 import { textFieldData } from "./config";
+import { useSnackbar } from "../../../../../hooks";
+
 export const AddNewProduct = () => {
+  const { showSnackbar } = useSnackbar();
+
   const formik: FormikProps<ValuesIF> = useFormik<ValuesIF>({
     initialValues,
     onSubmit: (values, { resetForm }) =>
-      handleFormikSubmite(values, { resetForm }),
+      handleFormikSubmite(values, { resetForm },showSnackbar),
     validationSchema,
   });
-
   return (
     <Card sx={{ padding: "1rem" }}>
       <Box component="form" onSubmit={formik.handleSubmit}>
