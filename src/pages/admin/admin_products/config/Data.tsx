@@ -1,5 +1,5 @@
 import { URL_CATEGORY, URL_SUBCATEGORY } from "../../../../config";
-import { productsDataIF, SearchSelectOptionDatasIF, ShowHeaderIF } from "../utils";
+import { productsDataIF, SearchSelectOptionDatasIF, SelectHeader, ShowHeaderIF } from "../utils";
 import { HoverReveal } from "../../../../components";
 import { AdminProductImage } from "../components/product_table";
 import { fCurrency, fDate } from "../../../../utils";
@@ -33,7 +33,7 @@ export const productCellData = [
     render: (row: { updatedAt: string }) => fDate(row?.updatedAt),
   },
   { key: "quantity", render: (row: { quantity: number }) => row?.quantity },
-  { key: "edit", render: (row: productsDataIF) => <APEBtn {...{ row }} /> },
+  { key: "edit", render: (row: productsDataIF,setSelectComp:(arg0: SelectHeader)=> void) => <APEBtn {...{ row,setSelectComp }} /> },
 ];
 // --------------------------------------------
 export const searchTextFeildData = [

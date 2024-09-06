@@ -1,8 +1,8 @@
 import { TableBody } from "@mui/material";
-import { productsDataIF } from "../../utils";
+import { productsDataIF, SelectHeader } from "../../utils";
 import { ProductsTableCell } from "./ProductsTableCell";
 
-export const AdminProductsTableBody = ({rows}:{rows:productsDataIF[]}) => {
+export const AdminProductsTableBody = ({rows,setSelectComp}:{rows:productsDataIF[],setSelectComp:(arg0: SelectHeader)=> void;}) => {
   return (
     <TableBody>
       {rows?.map((row: productsDataIF, index: number) => {
@@ -14,6 +14,7 @@ export const AdminProductsTableBody = ({rows}:{rows:productsDataIF[]}) => {
               row,
               labelId,
               index,
+              setSelectComp
             }}
           />
         );

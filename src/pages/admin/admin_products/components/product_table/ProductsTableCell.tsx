@@ -8,6 +8,7 @@ export const ProductsTableCell: FC<ProductsTableCellIF> = ({
   row,
   labelId,
   index,
+  setSelectComp
 }) => {
   return (
     <TableRow hover tabIndex={-1} key={row._id} sx={{ cursor: "pointer" }}>
@@ -20,7 +21,7 @@ export const ProductsTableCell: FC<ProductsTableCellIF> = ({
             id={cell?.key === "thumbnail" ? labelId : undefined}
             scope={cell?.key === "thumbnail" ? "row" : undefined}
           >
-            {cell?.render(row)}
+            {cell?.render(row,setSelectComp)}
           </TableCell>
         );
       })}

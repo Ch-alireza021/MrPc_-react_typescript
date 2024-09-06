@@ -76,6 +76,7 @@ const AdminProducts = () => {
             rowsPerPage,
             page,
             setRowsPerPage,
+            setSelectComp
           }}
         />
       )}

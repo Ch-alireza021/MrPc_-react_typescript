@@ -13,6 +13,7 @@ export const AdminProductsTable: FC<AdminProductsTableIF> = ({
   setOrderBy,
   setOrder,
   rows,
+  setSelectComp
 }) => {
   return (
     <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle" size="medium">
@@ -30,7 +31,7 @@ export const AdminProductsTable: FC<AdminProductsTableIF> = ({
           )
         }
       />
-      <AdminProductsTableBody rows={rows} />
+      <AdminProductsTableBody {...{rows,setSelectComp}} />
     </Table>
   );
 };

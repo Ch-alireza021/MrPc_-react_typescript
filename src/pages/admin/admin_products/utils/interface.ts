@@ -34,6 +34,7 @@ export interface AdminProductsTableIF {
   rows: productsDataIF[];
   setOrderBy: (value: SetStateAction<OrdersOrderBy>) => void;
   setOrder: (value: SetStateAction<OrderIF>) => void;
+  setSelectComp: (arg0: SelectHeader) => void;
 }
 export interface AdminProductsPaginationIF {
   total: number;
@@ -53,6 +54,7 @@ export interface ProductsTableCellIF {
   row: productsDataIF;
   labelId: string;
   index: number;
+  setSelectComp: (arg0: SelectHeader) => void;
 }
 
 export type SelectHeader = "table" | "card" | "addNew";
@@ -71,6 +73,7 @@ export interface ProductsTableComponentsIF {
   setRowsPerPage: (value: SetStateAction<number>) => void;
   rows: productsDataIF[];
   total: number;
+  setSelectComp: (arg0: SelectHeader) => void;
 }
 // --------------------------------------------
 export interface SearchSelectOptionDatasIF {

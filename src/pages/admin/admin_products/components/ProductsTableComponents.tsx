@@ -18,13 +18,14 @@ export const ProductsTableComponents: FC<ProductsTableComponentsIF> = ({
   rowsPerPage,
   page,
   setRowsPerPage,
+  setSelectComp
 }) => {
   return (
     <Paper sx={{ width: "100%", mb: 2, borderRadius: "1rem" }}>
       <EnhancedTableToolbar />
       <TableContainer sx={{ padding: "1rem" }}>
         <AdminProductsTable
-          {...{ order, orderBy, setOrderBy, setOrder, rows }}
+          {...{ order, orderBy, setOrderBy, setOrder, rows,setSelectComp }}
         />
       </TableContainer>
       <AdminProductsPagination
