@@ -83,7 +83,7 @@ const AdminProducts = () => {
       {selectComp === "card" && (
         <AdminProductsCardComp {...{ rows, page, setPage, total_pages }} />
       )}
-      {selectComp === "addNew" && <AddNewProduct />}
+      {selectComp === "addNew" && <AddNewProduct {...{setSelectComp}} />}
     </Box>
   );
 };

@@ -19,7 +19,7 @@ export const AAPIHover = ({
     setAnchorEl(null);
   };
   const open = Boolean(anchorEl);
-
+console.log({image})
   return (
     <div>
       {image && (
@@ -52,7 +52,7 @@ export const AAPIHover = ({
               onMouseEnter={handlePopoverOpen}
               onMouseLeave={handlePopoverClose}
               component="img"
-              image={URL.createObjectURL(image)}
+              image={ URL.createObjectURL(image)}
               alt="add image"
             />
           </Box>

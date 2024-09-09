@@ -2,12 +2,13 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import { ClassicEditor } from "ckeditor5";
 
 import "ckeditor5/ckeditor5.css";
-import { FormikHelpers } from "formik";
+import { FormikHelpers, FormikProps } from "formik";
 import { ValuesIF } from "../../utils";
 import { toolbar } from "./toolbar";
 import { plugins } from "./plugins";
 
-export const MyEditor = ({ formik }: { formik: FormikHelpers<ValuesIF> }) => {
+export const MyEditor = ({ formik }: { formik: FormikHelpers<ValuesIF> & FormikProps<ValuesIF> }) => {
+
   return (
     <CKEditor
       editor={ClassicEditor}
@@ -21,7 +22,7 @@ export const MyEditor = ({ formik }: { formik: FormikHelpers<ValuesIF> }) => {
         },
         toolbar: toolbar,
         plugins: plugins,
-        initialData: "",
+        initialData:formik.values.description,
       }}
     />
   );

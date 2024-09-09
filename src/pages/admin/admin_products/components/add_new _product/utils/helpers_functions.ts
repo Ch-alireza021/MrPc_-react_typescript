@@ -1,13 +1,12 @@
 import { ChangeEvent } from "react";
-import { FormikHelpers } from "formik";
+import { FormikHelpers, FormikProps } from "formik";
 import { ValuesIF } from "./interface";
 import { creatCat, creatSubCat } from "../../../../../../services";
 import { ShowSnackbarType } from "../../../../../../hooks";
 
-
 export const handleImageChange = (
   event: ChangeEvent<HTMLInputElement>,
-  formik: FormikHelpers<ValuesIF>
+  formik: FormikHelpers<ValuesIF> & FormikProps<ValuesIF>
 ) => {
   const fileList = event.target.files;
   if (fileList) {
@@ -15,6 +14,7 @@ export const handleImageChange = (
       file.type.startsWith("image/")
     );
     if (imagesArray.length > 0) {
+      formik.values.images?.forEach((i:File) => imagesArray.push(i));
       formik.setFieldValue("images", imagesArray);
     }
   }
@@ -34,9 +34,12 @@ export const handleThumbnailChange = (
   }
 };
 
-export const handelCategory = async (values: ValuesIF,showSnackbar:ShowSnackbarType) => {
+export const handelCategory = async (
+  values: ValuesIF,
+  showSnackbar: ShowSnackbarType
+) => {
   if (values?.category === "addNew" && values?.addCategory) {
-    const category = await creatCat(values?.addCategory,showSnackbar);
+    const category = await creatCat(values?.addCategory, showSnackbar);
     if (category) values.category = category;
     if (category !== "failed") delete values.addCategory;
     return category;
@@ -46,9 +49,12 @@ export const handelCategory = async (values: ValuesIF,showSnackbar:ShowSnackbarT
   }
 };
 
-export const handelsubcategory = async (values: ValuesIF,showSnackbar:ShowSnackbarType) => {
+export const handelsubcategory = async (
+  values: ValuesIF,
+  showSnackbar: ShowSnackbarType
+) => {
   if (values?.subcategory === "addNew") {
-    const subcategory = await creatSubCat(values,showSnackbar);
+    const subcategory = await creatSubCat(values, showSnackbar);
     if (subcategory) values.subcategory = subcategory;
     if (subcategory !== "failed") delete values.addCategory;
     delete values.addSubcategory;

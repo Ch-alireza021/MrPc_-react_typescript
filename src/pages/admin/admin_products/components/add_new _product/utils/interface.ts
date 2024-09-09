@@ -2,6 +2,7 @@ import { FormikHelpers, FormikProps } from "formik";
 
 export interface ValuesIF {
   images: File[];
+  _id?: string;
   thumbnail: File | null;
   productName: string;
   quantity: number | "";
@@ -11,7 +12,9 @@ export interface ValuesIF {
   subcategory: string;
   addSubcategory?: string;
   addCategory?: string;
-  description:string
+  description: string;
+  addImages?: string[];
+  addThumbnail?: string | null;
 }
 
 export type AAPTPropsData = {

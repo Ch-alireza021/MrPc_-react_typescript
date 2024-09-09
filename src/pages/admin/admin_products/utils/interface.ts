@@ -10,6 +10,8 @@ export interface productsDataIF {
   updatedAt: string;
   quantity: number;
   edit?: ReactNode;
+  images:File[]|[];
+  
 }
 export type OrdersOrderBy =
   | "name"
