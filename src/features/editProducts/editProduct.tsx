@@ -45,17 +45,7 @@ export const editProductReducer = createSlice({
     setEditingFalse: (state) => {
       state.isEditing = false;
       state.initialValues = {
-        images: [],
-        thumbnail: null,
-        productName: "",
-        quantity: "",
-        price: "",
-        brand: "",
-        category: "",
-        subcategory: "",
-        addSubcategory: "",
-        addCategory: "",
-        description: "",
+       ...initialValues
       };
     },
   },

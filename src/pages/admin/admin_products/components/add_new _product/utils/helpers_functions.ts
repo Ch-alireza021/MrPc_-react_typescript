@@ -3,6 +3,8 @@ import { FormikHelpers, FormikProps } from "formik";
 import { ValuesIF } from "./interface";
 import { creatCat, creatSubCat } from "../../../../../../services";
 import { ShowSnackbarType } from "../../../../../../hooks";
+import { URL_BACKEND_IMAGES } from "../../../../../../config";
+import { downloadImages } from "../../../../../../features";
 
 export const handleImageChange = (
   event: ChangeEvent<HTMLInputElement>,
@@ -62,5 +64,23 @@ export const handelsubcategory = async (
   } else {
     delete values.addSubcategory;
     return values.subcategory;
+  }
+};
+
+
+export const getImage = async ({ formik,data}:{formik:FormikHelpers<ValuesIF>,data:ValuesIF}) => {
+  const imageUrls = data.addImages?.map(
+    (image) => `${URL_BACKEND_IMAGES}/images/${image}`
+  );
+  const ThumbnailUrl = [
+    `${URL_BACKEND_IMAGES}/thumbnails/${data.addThumbnail}`,
+  ];
+  try {
+    const files = imageUrls ? await downloadImages(imageUrls) : [];
+    const thumbnail = await downloadImages(ThumbnailUrl);
+    formik.setFieldValue("images", files);
+    formik.setFieldValue("thumbnail", thumbnail[0]);
+  } catch (error) {
+    console.error("Error downloading images:", error);
   }
 };
