@@ -1,20 +1,24 @@
-// APEBtn ===>admin products edite button
-// ----------------------------------------
-import * as React from "react";
 import Button from "@mui/material/Button";
 import VisibilityIcon from "@mui/icons-material/Edit";
 import { alpha } from "@mui/material";
-import { productsDataIF } from "../../utils";
-export interface Row {
-  _id: string;
-  [key: string]: any;
-}
+import { productsDataIF, SelectHeader } from "../../utils";
+import { useDispatch } from "react-redux";
+import { setProductData } from "../../../../../features";
 
-export const APEBtn = (props: { row: productsDataIF }) => {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  
+export const APEBtn = ({
+  row,
+  setSelectComp,
+}: {
+  row: productsDataIF;
+  setSelectComp: (arg0: SelectHeader) => void;
+}) => {
+  const dispatch = useDispatch();
+
+
+  const handleEditProduct = async () => {
+    setSelectComp("addNew");
+    dispatch(setProductData(row));
+  };
 
   return (
     <Button
@@ -27,8 +31,7 @@ export const APEBtn = (props: { row: productsDataIF }) => {
           bgcolor: (theme) => alpha(theme.palette.primary.main, 0.16),
         },
       }}
-      //   onClick={() => handleCheckOrder(row)}
-      onClick={handleOpen}
+      onClick={handleEditProduct}
       endIcon={<VisibilityIcon />}
     >
       ویرایش
