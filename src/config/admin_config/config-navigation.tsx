@@ -2,8 +2,9 @@ import {
   TrendingUp,
   PermContactCalendar,
   ProductionQuantityLimits,
-  LocalMall
+  LocalMall,
 } from "@mui/icons-material";
+import { PATH } from "../router";
 interface NavItem {
   title: string;
   path: string;
@@ -15,23 +16,27 @@ interface NavItem {
 export const navConfig: NavItem[] = [
   {
     title: "داشتبرد",
-    path: "/admin/dashboard",
+    path: `/admin/${PATH.DASHBOARD}`,
     icon: <TrendingUp />,
   },
   {
     title: "محصولات",
-    path: "/admin/products",
+    path: `/admin/${PATH.ADMINPRODUCTS}`,
     icon: <ProductionQuantityLimits />,
   },
   {
     title: "یوزرها",
-    path: "/admin/users",
+    path: `/admin/${PATH.USERVIWE}`,
     icon: <PermContactCalendar />,
   },
   {
     title: "سفارش ها",
-    path: "/admin/orders",
+    path: `/admin/${PATH.ADMINORDERS}`,
     icon: <LocalMall />,
   },
- 
+  {
+    title: "دسته بندی و زیرمجموعه",
+    path: `/admin/${PATH.ACSUBCATEGORY}`,
+    icon: <LocalMall />,
+  },
 ];

@@ -2,12 +2,15 @@ import { createBrowserRouter, RouteObject } from "react-router-dom";
 import { lazy } from "react";
 import { Loadable } from "../layouts/loadable/Loadable";
 import { PATH } from "../config";
+
+
+
 // Lazy load components
 const User = Loadable(lazy(() => import("../layouts/user/User")));
 const Home = Loadable(lazy(() => import("../pages/users/home/Home")));
 const AboutUs = Loadable(lazy(() => import("../pages/about_us/AboutUs")));
 const CommonQuestions = Loadable(
-  lazy(() => import("../pages/common-questions/Common_questions"))
+  lazy(() => import("../pages/common-questions/common_questions"))
 );
 const Terms = Loadable(lazy(() => import("../pages/terms/Terms")));
 const Login = Loadable(lazy(() => import("../pages/login/Login")));
@@ -19,6 +22,8 @@ const AdminDashboard = Loadable(
 const UserViwe = Loadable(lazy(() => import("../pages/admin/users/UserView")));
 const AdminOrdersPage = Loadable(lazy(() => import("../pages/admin/admin_orders/AdminOrdersPage")));
 const AdminProducts = Loadable(lazy(() => import("../pages/admin/admin_products/AdminProducts")));
+const ACSubcategory = Loadable(lazy(() => import("../pages/admin/admin_cat&subcat/ACSubcategory")));
+
 
 // Define routes
 export const routes: RouteObject[] = [
@@ -53,6 +58,10 @@ export const routes: RouteObject[] = [
       {
         path: PATH.ADMINPRODUCTS,
         element:<AdminProducts/>,
+      },
+      {
+        path: PATH.ACSUBCATEGORY,
+        element:<ACSubcategory/>,
       },
     ],
   },
