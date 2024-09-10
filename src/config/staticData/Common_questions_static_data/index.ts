@@ -1,0 +1,1 @@
+export * from './Common_questions_static_data'

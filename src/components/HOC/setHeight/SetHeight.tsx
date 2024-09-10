@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 
 interface SetHeightProps {
   children: ReactNode;
+  zIndex:number;
 }
 
 export const SetHeight: React.FC<SetHeightProps> = ({ children }) => {
@@ -33,9 +34,10 @@ export const SetHeight: React.FC<SetHeightProps> = ({ children }) => {
 
   return (
     <Box sx={{ width: 1, paddingBottom: `${divHeight}px` }}>
-      <Box sx={{width: 1,height:`${divHeight}px`}}>
-      {/* <Box sx={{ position: "fixed", zIndex: 100, width: 1 }}> */}
-        <Box ref={divRef}>{children}</Box>
+      <Box sx={{ width: 1, height: `${divHeight}px` }}>
+        <Box sx={{ position: "fixed", zIndex: 100, width: 1 }}>
+          <Box ref={divRef}>{children}</Box>
+        </Box>
       </Box>
     </Box>
   );

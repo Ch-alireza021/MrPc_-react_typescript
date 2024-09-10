@@ -1,0 +1,1 @@
+export * from './terms_static_data'
