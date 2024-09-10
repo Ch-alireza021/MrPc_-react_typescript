@@ -9,8 +9,8 @@ interface GetProductsIF {
   orderBy: OrdersOrderBy;
   page: number;
   rowsPerPage: number;
-  url: string;
-  req: boolean;
+  url?: string;
+  req?: boolean;
 }
 
 export const getProducts = async ({

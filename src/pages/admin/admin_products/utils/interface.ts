@@ -19,6 +19,7 @@ export type OrdersOrderBy =
   | "subcategory"
   | "price"
   | "updatedAt"
+  | "createdAt"
   | "quantity";
 export type OrderIF = "asc" | "desc";
 export interface EnhancedTablePropsIF {
