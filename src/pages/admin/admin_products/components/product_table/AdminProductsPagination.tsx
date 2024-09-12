@@ -1,17 +1,19 @@
 import { TablePagination } from "@mui/material";
-import { AdminProductsPaginationIF, handleChangeRowsPerPage } from "../../utils";
+import {
+  AdminProductsPaginationIF,
+  handleChangeRowsPerPage,
+} from "../../utils";
 import { FC } from "react";
 
 export const AdminProductsPagination: FC<AdminProductsPaginationIF> = ({
-  setPage,
+  tableDetails,
+  setTableDetails,
   total,
-  rowsPerPage,
-  page,
-  setRowsPerPage,
 }) => {
   const handleChangePage = (_event: unknown, newPage: number) => {
-    setPage(newPage);
+    setTableDetails((pre) => ({ ...pre, page: newPage }));
   };
+  const { rowsPerPage, page } = tableDetails;
   return (
     <TablePagination
       rowsPerPageOptions={[5, 10, 25]}
@@ -21,7 +23,7 @@ export const AdminProductsPagination: FC<AdminProductsPaginationIF> = ({
       page={page}
       onPageChange={handleChangePage}
       onRowsPerPageChange={(event) =>
-        handleChangeRowsPerPage(event, setRowsPerPage, setPage)
+        handleChangeRowsPerPage(event, setTableDetails)
       }
       labelRowsPerPage="تعداد ردیف در صفحه"
     />

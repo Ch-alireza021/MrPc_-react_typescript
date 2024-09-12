@@ -1,4 +1,5 @@
 import { ReactNode, SetStateAction } from "react";
+import { CategoryOrderBy } from "../../admin_cat&subcat";
 
 export interface productsDataIF {
   _id: string;
@@ -10,8 +11,7 @@ export interface productsDataIF {
   updatedAt: string;
   quantity: number;
   edit?: ReactNode;
-  images:File[]|[];
-  
+  images: File[] | [];
 }
 export type OrdersOrderBy =
   | "name"
@@ -32,19 +32,22 @@ export interface EnhancedTablePropsIF {
 }
 
 export interface AdminProductsTableIF {
-  order: OrderIF;
-  orderBy: string;
   rows: productsDataIF[];
-  setOrderBy: (value: SetStateAction<OrdersOrderBy>) => void;
-  setOrder: (value: SetStateAction<OrderIF>) => void;
+  tableDetails: TableDetailsIF;
+  setTableDetails: (value: SetStateAction<TableDetailsIF>) => void;
   setSelectComp: (arg0: SelectHeader) => void;
+}
+
+export interface TableDetailsIF {
+  order: OrderIF;
+  orderBy: OrdersOrderBy;
+  page: number;
+  rowsPerPage: number;
 }
 export interface AdminProductsPaginationIF {
   total: number;
-  rowsPerPage: number;
-  page: number;
-  setRowsPerPage: (value: SetStateAction<number>) => void;
-  setPage: (value: SetStateAction<number>) => void;
+  tableDetails: TableDetailsIF;
+  setTableDetails: (value: SetStateAction<TableDetailsIF>) => void;
 }
 export interface HeadCellIF {
   disablePadding?: boolean;
@@ -66,16 +69,18 @@ export interface ShowHeaderIF {
   key: SelectHeader;
 }
 export interface ProductsTableComponentsIF {
-  order: OrderIF;
-  setOrderBy: (value: SetStateAction<OrdersOrderBy>) => void;
-  orderBy: string;
-  setOrder: (value: SetStateAction<OrderIF>) => void;
-  page: number;
-  setPage: (value: SetStateAction<number>) => void;
-  rowsPerPage: number;
-  setRowsPerPage: (value: SetStateAction<number>) => void;
+  // order: OrderIF;
+  // setOrderBy: (value: SetStateAction<OrdersOrderBy>) => void;
+  // orderBy: string;
+  // setOrder: (value: SetStateAction<OrderIF>) => void;
+  // page: number;
+  // setPage: (value: SetStateAction<number>) => void;
+  // rowsPerPage: number;
+  // setRowsPerPage: (value: SetStateAction<number>) => void;
   rows: productsDataIF[];
   total: number;
+  tableDetails: TableDetailsIF;
+  setTableDetails: (value: SetStateAction<TableDetailsIF>) => void;
   setSelectComp: (arg0: SelectHeader) => void;
 }
 // --------------------------------------------

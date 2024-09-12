@@ -1,7 +1,7 @@
 import Toolbar from "@mui/material/Toolbar";
 import { Typography } from "@mui/material";
 
-export const EnhancedTableToolbar = () => {
+export const EnhancedTableToolbar = ({ title }: { title: string }) => {
   return (
     <Toolbar
       sx={{
@@ -17,9 +17,9 @@ export const EnhancedTableToolbar = () => {
         id="tableTitle"
         component="div"
       >
-        محصولات
+      
+        {title}
       </Typography>
-     
     </Toolbar>
   );
 };

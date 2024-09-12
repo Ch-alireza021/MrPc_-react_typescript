@@ -1,20 +1,16 @@
 import { Table } from "@mui/material";
 import { FC } from "react";
-import {
-  AdminProductsTableIF,
-  handleRequestSort,
-} from "../../utils";
+import { AdminProductsTableIF, handleRequestSort } from "../../utils";
 import { AdminProductsHeaders } from "./AdminProductsHeaders";
 import { AdminProductsTableBody } from "./AdminProductsTableBody";
 
 export const AdminProductsTable: FC<AdminProductsTableIF> = ({
-  order,
-  orderBy,
-  setOrderBy,
-  setOrder,
+  tableDetails,
+  setTableDetails,
   rows,
-  setSelectComp
+  setSelectComp,
 }) => {
+  const { order, orderBy } = tableDetails;
   return (
     <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle" size="medium">
       <AdminProductsHeaders
@@ -26,12 +22,11 @@ export const AdminProductsTable: FC<AdminProductsTableIF> = ({
             property,
             orderBy,
             order,
-            setOrderBy,
-            setOrder
+            setTableDetails
           )
         }
       />
-      <AdminProductsTableBody {...{rows,setSelectComp}} />
+      <AdminProductsTableBody {...{ rows, setSelectComp }} />
     </Table>
   );
 };
