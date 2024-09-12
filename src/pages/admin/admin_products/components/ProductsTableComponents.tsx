@@ -8,29 +8,21 @@ import { FC } from "react";
 import { ProductsTableComponentsIF } from "../utils";
 
 export const ProductsTableComponents: FC<ProductsTableComponentsIF> = ({
-  order,
-  orderBy,
-  setOrderBy,
-  setOrder,
   rows,
-  setPage,
+  tableDetails,
+  setTableDetails,
   total,
-  rowsPerPage,
-  page,
-  setRowsPerPage,
-  setSelectComp
+  setSelectComp,
 }) => {
   return (
     <Paper sx={{ width: "100%", mb: 2, borderRadius: "1rem" }}>
-      <EnhancedTableToolbar />
+      <EnhancedTableToolbar title={"محصولات"} />
       <TableContainer sx={{ padding: "1rem" }}>
         <AdminProductsTable
-          {...{ order, orderBy, setOrderBy, setOrder, rows,setSelectComp }}
+          {...{ tableDetails, setTableDetails, rows, setSelectComp }}
         />
       </TableContainer>
-      <AdminProductsPagination
-        {...{ setPage, total, rowsPerPage, page, setRowsPerPage }}
-      />
+      <AdminProductsPagination {...{ tableDetails, setTableDetails, total }} />
     </Paper>
   );
 };
