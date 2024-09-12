@@ -3,6 +3,8 @@ import {
   PermContactCalendar,
   ProductionQuantityLimits,
   LocalMall,
+  SubdirectoryArrowRight,
+  Category
 } from "@mui/icons-material";
 import { PATH } from "../router";
 interface NavItem {
@@ -10,7 +12,6 @@ interface NavItem {
   path: string;
   icon: JSX.Element;
 }
-
 // ----------------------------------------------------------------------
 
 export const navConfig: NavItem[] = [
@@ -35,8 +36,13 @@ export const navConfig: NavItem[] = [
     icon: <LocalMall />,
   },
   {
-    title: "دسته بندی و زیرمجموعه",
-    path: `/admin/${PATH.ACSUBCATEGORY}`,
-    icon: <LocalMall />,
+    title: "دسته بندی  ",
+    path: `/admin/${PATH.ACATEGORY}`,
+    icon: <Category />,
+  },
+  {
+    title: "زیرمجموعه",
+    path: `/admin/${PATH.ASUBCATEGORY}`,
+    icon: <SubdirectoryArrowRight />,
   },
 ];
