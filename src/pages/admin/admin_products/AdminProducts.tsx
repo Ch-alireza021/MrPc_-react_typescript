@@ -1,49 +1,35 @@
+import { AdminProductsCardComp } from "./components/products_card";
+import { creatUrl, SelectHeader, switchTab } from "./utils";
+import { RootState } from "../../../features/rootReducers";
 import { useQuery } from "@tanstack/react-query";
+import { useTableDetails } from "../../../hooks";
 import { getProducts } from "../../../services";
-import { Box } from "@mui/material";
-import { OrderIF, OrdersOrderBy, SelectHeader } from "./utils";
-import React, { useEffect } from "react";
 import { Loading } from "../../../components";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../features/rootReducers";
+import React, { useEffect } from "react";
+import { Box } from "@mui/material";
 import {
   AddNewProduct,
   AdminProductsHeaderComp,
   ProductsTableComponents,
 } from "./components";
-import { AdminProductsCardComp } from "./components/products_card";
 
 const AdminProducts = () => {
-  const [order, setOrder] = React.useState<OrderIF>("asc");
-  const [orderBy, setOrderBy] = React.useState<OrdersOrderBy>("quantity");
-  const [page, setPage] = React.useState<number>(0);
+  const { tableDetails, setTableDetails } = useTableDetails();
+  const { order, orderBy, page, rowsPerPage } = tableDetails;
+  // -------------------------------------------------------------------
   const [selectComp, setSelectComp] = React.useState<SelectHeader>("table");
-  const [rowsPerPage, setRowsPerPage] = React.useState<number>(5);
   const formValues = useSelector((state: RootState) => state?.sPState);
-  const url = Object.entries(formValues)
-    .filter(([key, value]) => key !== "req" && value)
-    .map(([key, value]) => `${key}=${value}`)
-    .join("&");
+  const url = creatUrl(formValues);
   useEffect(() => {
-    setPage(0);
+    setTableDetails((pre) => ({ ...pre, page: 0 }));
   }, [rowsPerPage, formValues?.req]);
   useEffect(() => {
-    if (selectComp === "card") {
-      setRowsPerPage(30);
-    }else if (selectComp === "table") {
-      setRowsPerPage(5);
-    }
+    switchTab({ selectComp, setTableDetails });
   }, [selectComp]);
   // --------------------------------------------------
   const { data, isLoading } = useQuery({
-    queryKey: [
-      "adminProducts",
-      order,
-      orderBy,
-      page,
-      rowsPerPage,
-      formValues?.req,
-    ],
+    queryKey: ["adminProducts", tableDetails, formValues?.req],
     queryFn: async () =>
       await getProducts({
         order,
@@ -58,7 +44,6 @@ const AdminProducts = () => {
   const rows = data?.data?.products || [];
   const total = data?.total || 0;
   const total_pages = data?.total_pages || 0;
-
   // --------------------------------------------------
   return (
     <Box sx={{ width: "100%" }}>
@@ -66,24 +51,20 @@ const AdminProducts = () => {
       {selectComp === "table" && (
         <ProductsTableComponents
           {...{
-            order,
-            orderBy,
-            setOrderBy,
-            setOrder,
+            tableDetails,
+            setTableDetails,
             rows,
-            setPage,
             total,
-            rowsPerPage,
-            page,
-            setRowsPerPage,
-            setSelectComp
+            setSelectComp,
           }}
         />
       )}
       {selectComp === "card" && (
-        <AdminProductsCardComp {...{ rows, page, setPage, total_pages }} />
+        <AdminProductsCardComp
+          {...{ rows, page: tableDetails.page, setTableDetails, total_pages }}
+        />
       )}
-      {selectComp === "addNew" && <AddNewProduct {...{setSelectComp}} />}
+      {selectComp === "addNew" && <AddNewProduct {...{ setSelectComp }} />}
     </Box>
   );
 };
