@@ -1,3 +1,5 @@
+import { visuallyHidden } from "@mui/utils";
+import { header } from "../../../utils";
 import {
   TableHead,
   TableRow,
@@ -5,25 +7,25 @@ import {
   TableSortLabel,
   Box,
 } from "@mui/material";
-
-import { visuallyHidden } from "@mui/utils";
-import { header } from "../../../utils";
-import { CategoryOrderBy, EnhancedTablePropsIF } from "../../../utils/interface";
+import {
+  CategoryOrderBy,
+  EnhancedTablePropsIF,
+} from "../../../utils/interface";
 
 // -------------------------------------------------------------
 // ACASTHeader ==> admin category ans subcategory header
 export const ACASTHeader = (props: EnhancedTablePropsIF) => {
-  const { order, orderBy, onRequestSort } = props;
-
+  const { order, orderBy, onRequestSort, headerData } = props;
   const createSortHandler =
     (property: CategoryOrderBy) => (event: React.MouseEvent<unknown>) => {
       onRequestSort(event, property);
     };
   const sort: CategoryOrderBy[] = ["name", "createdAt"];
+
   return (
     <TableHead>
       <TableRow>
-        {header.map((headCell) => (
+        {header(headerData).map((headCell) => (
           <TableCell
             key={headCell.id}
             align={"left"}
