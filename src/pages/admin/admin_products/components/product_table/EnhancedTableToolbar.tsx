@@ -1,7 +1,14 @@
 import Toolbar from "@mui/material/Toolbar";
 import { Typography } from "@mui/material";
+import { ReactNode } from "react";
 
-export const EnhancedTableToolbar = ({ title }: { title: string }) => {
+export const EnhancedTableToolbar = ({
+  title,
+  children,
+}: {
+  title: string;
+  children?: ReactNode;
+}) => {
   return (
     <Toolbar
       sx={{
@@ -17,9 +24,9 @@ export const EnhancedTableToolbar = ({ title }: { title: string }) => {
         id="tableTitle"
         component="div"
       >
-      
         {title}
       </Typography>
+      {children}
     </Toolbar>
   );
 };
