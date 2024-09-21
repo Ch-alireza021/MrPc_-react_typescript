@@ -1,17 +1,10 @@
-import Button from "@mui/material/Button";
-import VisibilityIcon from "@mui/icons-material/Edit";
-import { alpha } from "@mui/material";
 import { BasicModal } from "../../../../../components";
-import { useState } from "react";
+import { Edit, Add } from "@mui/icons-material";
+import Button from "@mui/material/Button";
+import { ACASEBtnIF } from "../../utils";
+import { alpha } from "@mui/material";
 import { AECForm } from "./AECForm";
-import { CategoryIF } from "../../utils";
-import { AECFormDataIF } from "../../config";
-
-// Define the interface with both row and data props
-export interface ACASEBtnIF {
-  row: CategoryIF;
-  data: AECFormDataIF[];
-}
+import { useState } from "react";
 
 export const ACASEBtn = ({ row, data }: ACASEBtnIF) => {
   const [open, setOpen] = useState<boolean>(false);
@@ -28,12 +21,12 @@ export const ACASEBtn = ({ row, data }: ACASEBtnIF) => {
           },
         }}
         onClick={() => setOpen(true)}
-        endIcon={<VisibilityIcon />}
+        endIcon={!row ? <Add /> : <Edit />}
       >
-        ویرایش
+        {row ? "   ویرایش" : "اضافه کردن"}
       </Button>
       <BasicModal open={open} setOpen={setOpen}>
-        <AECForm data={data} row={row} />
+        <AECForm {...{ setOpen, row, data }} />
       </BasicModal>
     </>
   );
