@@ -68,19 +68,30 @@ export interface ECOnSuccessIF {
   setOpen: (arg0: boolean) => void;
   showSnackbar: ShowSnackbarType;
   queryClient: any;
-  isEdit:boolean;
+  isEdit: boolean;
 }
 // ---------
 export interface ECOnErrorIF {
-  error: {
-    message: string;
-    response?: {
-      data?: {
-        error: { message: string };
-      };
-      status: number;
-    };
-  } | Error;
+  error:
+    | {
+        message: string;
+        response?: {
+          data?: {
+            error: { message: string };
+          };
+          status: number;
+        };
+      }
+    | Error;
   showSnackbar: ShowSnackbarType;
   isEdit: boolean;
+}
+
+// ------------------------------------------
+// AECForm ==> admin edit category form
+// ------------------------------------------
+export interface SbcategoryIF {
+  category: string;
+  name: string;
+  _id: string;
 }

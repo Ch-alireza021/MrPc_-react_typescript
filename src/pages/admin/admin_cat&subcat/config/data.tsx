@@ -2,8 +2,14 @@ import { URL_CATEGORY } from "../../../../config";
 import { fDate } from "../../../../utils";
 import { CASName } from "../../admin_products/components";
 import { ACASEBtn } from "../components";
+import { ASEABtn } from "../components/add_edit_subcategory/ASEABtn";
 import { ACASIcon } from "../components/table/ACASIcon";
-import { AECFormDataIF, CategoryDataIF, CategoryIF, SubategoryDataIF } from "../utils";
+import {
+  AECFormDataIF,
+  CategoryDataIF,
+  CategoryIF,
+  SubategoryDataIF,
+} from "../utils";
 
 export const categoryData: CategoryDataIF[] = [
   {
@@ -42,7 +48,7 @@ export const subcategoryData: SubategoryDataIF[] = [
   },
   {
     key: "edit",
-    render: (row) => <ACASEBtn row={row} data={[]} />,
+    render: (row) => <ASEABtn row={row} />,
   },
 ];
 // --------------------------------------------
