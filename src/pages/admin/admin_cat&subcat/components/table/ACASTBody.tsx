@@ -1,10 +1,9 @@
 import { TableBody } from "@mui/material";
 import { ACASTCell } from "./ACASTCell";
-import { CategoryIF } from "../../utils";
-import { categoryData } from "../../config";
+import { CategoryDataIF, CategoryIF, SubategoryDataIF } from "../../utils";
 // -----------------------------------------------------
 // ACASTBody ==> admin category and subcategory table body
-export const ACASTBody = ({ rows }: { rows: CategoryIF[] }) => {
+export const ACASTBody = ({ rows,data}: { rows: CategoryIF[], data:CategoryDataIF[]|SubategoryDataIF[] }) => {
   return (
     <TableBody>
       {rows?.map((row: CategoryIF, index: number) => {
@@ -16,7 +15,7 @@ export const ACASTBody = ({ rows }: { rows: CategoryIF[] }) => {
               row,
               labelId,
               index,
-              data:categoryData
+              data
             }}
           />
         );
