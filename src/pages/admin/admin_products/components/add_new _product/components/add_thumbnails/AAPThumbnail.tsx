@@ -1,7 +1,7 @@
+import { handleThumbnailChange, VisuallyHiddenInput } from "../../utils";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { Box, Button } from "@mui/material";
 import { buttonStyles } from "../../../../utils";
-import { handleThumbnailChange, VisuallyHiddenInput } from "../../utils";
 import { FormikHelpers, FormikProps } from "formik";
 import { ValuesIF } from "../../utils/interface";
 import { AAPIHover } from "../add_images/AAPIHover";

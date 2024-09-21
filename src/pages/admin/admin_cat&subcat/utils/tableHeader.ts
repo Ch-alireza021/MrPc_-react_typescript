@@ -1,14 +1,16 @@
 
-import { CategoryIF } from "./interface";
 export interface HeadCellIF {
-    disablePadding: boolean;
-    id: keyof CategoryIF;
-    label: string;
-    numeric: boolean;
-  }
-  
- export  const header: readonly HeadCellIF[] = [
-    {
+  disablePadding: boolean;
+  id: string;
+  label: string;
+  numeric: boolean;
+}
+
+export const header = (
+  headerData: "category" | "subcategory"
+): HeadCellIF[] => {
+  const data: HeadCellIF[] = [
+    headerData!== "subcategory" &&   {
       id: "icon",
       numeric: false,
       disablePadding: true,
@@ -18,9 +20,14 @@ export interface HeadCellIF {
       id: "name",
       numeric: false,
       disablePadding: true,
+      label: headerData === "subcategory" ? "نام زیر مجموعه" : " نام دسته بندی",
+    },
+    headerData === "subcategory" && {
+      id: "category",
+      numeric: false,
+      disablePadding: true,
       label: " نام دسته بندی",
     },
-   
     {
       id: "createdAt",
       numeric: true,
@@ -33,4 +40,6 @@ export interface HeadCellIF {
       disablePadding: false,
       label: " ویرایش",
     },
-  ];
+  ].filter((i) => typeof i !== "boolean");
+  return data;
+};

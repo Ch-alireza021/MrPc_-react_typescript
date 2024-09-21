@@ -7,7 +7,7 @@ export const AAPIHover = ({
   handleDelete,
 }: {
   image: File | null;
-  handleDelete: (img: File) => void;
+  handleDelete?: (img: File) => void;
 }) => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
 
@@ -19,7 +19,7 @@ export const AAPIHover = ({
     setAnchorEl(null);
   };
   const open = Boolean(anchorEl);
-console.log({image})
+  console.log({ image });
   return (
     <div>
       {image && (
@@ -32,18 +32,20 @@ console.log({image})
               position: "relative",
             }}
           >
-            <DeleteForeverIcon
-              sx={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                color: "red",
-                background: "white",
-                borderRadius: "50%",
-                border: "1px solid red",
-              }}
-              onClick={() => handleDelete(image)}
-            />
+            {handleDelete && (
+              <DeleteForeverIcon
+                sx={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  color: "red",
+                  background: "white",
+                  borderRadius: "50%",
+                  border: "1px solid red",
+                }}
+                onClick={() => handleDelete(image)}
+              />
+            )}
             <CardMedia
               sx={{
                 width: "100px",
@@ -52,7 +54,7 @@ console.log({image})
               onMouseEnter={handlePopoverOpen}
               onMouseLeave={handlePopoverClose}
               component="img"
-              image={ URL.createObjectURL(image)}
+              image={URL.createObjectURL(image)}
               alt="add image"
             />
           </Box>

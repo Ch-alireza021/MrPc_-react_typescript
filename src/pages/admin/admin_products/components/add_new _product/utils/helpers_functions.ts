@@ -1,10 +1,10 @@
-import { ChangeEvent } from "react";
-import { FormikHelpers, FormikProps } from "formik";
-import { ValuesIF } from "./interface";
 import { creatCat, creatSubCat } from "../../../../../../services";
-import { ShowSnackbarType } from "../../../../../../hooks";
 import { URL_BACKEND_IMAGES } from "../../../../../../config";
 import { downloadImages } from "../../../../../../features";
+import { ShowSnackbarType } from "../../../../../../hooks";
+import { FormikHelpers, FormikProps } from "formik";
+import { ValuesIF } from "./interface";
+import { ChangeEvent } from "react";
 
 export const handleImageChange = (
   event: ChangeEvent<HTMLInputElement>,
@@ -16,7 +16,7 @@ export const handleImageChange = (
       file.type.startsWith("image/")
     );
     if (imagesArray.length > 0) {
-      formik.values.images?.forEach((i:File) => imagesArray.push(i));
+      formik.values.images?.forEach((i: File) => imagesArray.push(i));
       formik.setFieldValue("images", imagesArray);
     }
   }
@@ -67,8 +67,13 @@ export const handelsubcategory = async (
   }
 };
 
-
-export const getImage = async ({ formik,data}:{formik:FormikHelpers<ValuesIF>,data:ValuesIF}) => {
+export const getImage = async ({
+  formik,
+  data,
+}: {
+  formik: FormikHelpers<ValuesIF>;
+  data: ValuesIF;
+}) => {
   const imageUrls = data.addImages?.map(
     (image) => `${URL_BACKEND_IMAGES}/images/${image}`
   );
