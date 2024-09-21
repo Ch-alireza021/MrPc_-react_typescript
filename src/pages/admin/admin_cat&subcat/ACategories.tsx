@@ -1,35 +1,39 @@
-import { useQuery } from "@tanstack/react-query";
-import { Loading } from "../../../components";
 import { Paper, Table, TableContainer } from "@mui/material";
+import { ACASTHeader } from "./components/table/header";
+import { aECFormData, categoryData } from "./config";
+import { ACASEBtn, ACASTBody } from "./components";
+import { useQuery } from "@tanstack/react-query";
+import { useTableDetails } from "../../../hooks";
+import { getCategory } from "../../../services";
+import { Loading } from "../../../components";
+import { handleRequestSort } from "./utils";
 import {
   EnhancedTableToolbar,
   AdminProductsPagination,
 } from "../admin_products/components";
-import { ACASTHeader } from "./components/table/header";
-import { ACASTBody } from "./components";
-import { getCategory } from "../../../services";
-import { useTableDetails } from "../../../hooks";
-import { handleRequestSort } from "./utils";
-
+// -----------------------------------------
+// admin categories
 const ACategories = () => {
   const { tableDetails, setTableDetails } = useTableDetails();
   const { orderBy, order } = tableDetails;
-// ----------------------------------------
+  // ----------------------------------------
   const { data, isLoading } = useQuery({
-    queryKey: ["ACSubcategory", tableDetails],
+    queryKey: ["ACCategory", tableDetails],
     queryFn: async () =>
       await getCategory({
         tableDetails,
       }),
   });
-// ----------------------------------------
+  // ----------------------------------------
   const dataArr = data?.data?.categories;
   const total = Number(data?.total) || 0;
   if (isLoading) return <Loading />;
 
   return (
     <Paper sx={{ width: "100%", mb: 2, borderRadius: "1rem" }}>
-      <EnhancedTableToolbar title={"دسته بندی"} />
+      <EnhancedTableToolbar title={"دسته بندی"}>
+        <ACASEBtn data={aECFormData} />
+      </EnhancedTableToolbar>
       <TableContainer sx={{ padding: "1rem" }}>
         <Table
           sx={{ minWidth: 750 }}
@@ -39,6 +43,7 @@ const ACategories = () => {
           <ACASTHeader
             order={order}
             orderBy={orderBy}
+            headerData={"category"}
             onRequestSort={(event, property) =>
               handleRequestSort(
                 event,
@@ -49,7 +54,7 @@ const ACategories = () => {
               )
             }
           />
-          <ACASTBody rows={dataArr} />
+          <ACASTBody rows={dataArr} data={categoryData} />
         </Table>
       </TableContainer>
       <AdminProductsPagination {...{ total, tableDetails, setTableDetails }} />
