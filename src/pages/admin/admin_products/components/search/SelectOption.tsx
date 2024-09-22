@@ -12,6 +12,7 @@ interface SelectOptionIF {
   URL: string;
   req?: boolean;
   addProduct?: boolean;
+  addSubcategory?:boolean
 }
 
 export const SelectOption: FC<SelectOptionIF> = ({
@@ -22,6 +23,7 @@ export const SelectOption: FC<SelectOptionIF> = ({
   URL,
   req,
   addProduct = false,
+  addSubcategory
 }) => {
   const { data: category } = useQuery({
     queryKey: [URL],
@@ -37,7 +39,7 @@ export const SelectOption: FC<SelectOptionIF> = ({
         label={title}
         value={showValue}
         onChange={(event) => onChangeSelect(event.target.value)}
-        sx={{ minWidth:addProduct? '100%':"150px", ...styleTextField,bgcolor:addProduct?'#EFEFEF':''}}
+        sx={{ minWidth:addProduct||addSubcategory ? '100%':"150px", ...styleTextField,bgcolor:addProduct?'#EFEFEF':''}}
       >
         {addProduct && (
           <MenuItem value="addNew" sx={{ ...styleTextField }}>

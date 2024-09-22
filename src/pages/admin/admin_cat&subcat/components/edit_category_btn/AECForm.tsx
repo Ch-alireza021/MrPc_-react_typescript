@@ -41,7 +41,14 @@ export const AECForm = ({ data, row, setOpen }: AECFormIF) => {
               "Content-Type": "multipart/form-data",
             },
           }),
-    onSuccess: () => eCOnSuccess({ showSnackbar, setOpen, queryClient, isEdit }),
+    onSuccess: () =>
+      eCOnSuccess({
+        showSnackbar,
+        setOpen,
+        queryClient,
+        isEdit,
+        queryKey: "ACCategory",
+      }),
     onError: (error) => eCOnError({ error, showSnackbar, isEdit }),
   });
 

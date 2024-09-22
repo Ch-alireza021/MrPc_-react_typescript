@@ -2,10 +2,10 @@ import { Add, Edit } from "@mui/icons-material";
 import { Button, alpha } from "@mui/material";
 import { useState } from "react";
 import { BasicModal } from "../../../../../components";
-import { SbcategoryIF } from "../../utils";
 import { AESForm } from "./AESForm";
+import { SbcategoryDataIF } from "../../utils";
 
-export const ASEABtn = ({ row }: { row: SbcategoryIF }) => {
+export const ASEABtn = ({ row }: { row: SbcategoryDataIF }) => {
   const [open, setOpen] = useState<boolean>(false);
   return (
     <>
@@ -25,7 +25,7 @@ export const ASEABtn = ({ row }: { row: SbcategoryIF }) => {
         {row ? "   ویرایش" : "اضافه کردن"}
       </Button>
       <BasicModal open={open} setOpen={setOpen}>
-        <AESForm />
+        <AESForm  row={row} setOpen={setOpen}/>
       </BasicModal>
     </>
   );

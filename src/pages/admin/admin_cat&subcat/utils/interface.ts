@@ -69,6 +69,7 @@ export interface ECOnSuccessIF {
   showSnackbar: ShowSnackbarType;
   queryClient: any;
   isEdit: boolean;
+  queryKey:'ACCategory'|'ACSubcategory'
 }
 // ---------
 export interface ECOnErrorIF {
@@ -90,7 +91,7 @@ export interface ECOnErrorIF {
 // ------------------------------------------
 // AECForm ==> admin edit category form
 // ------------------------------------------
-export interface SbcategoryIF {
+export interface SbcategoryDataIF {
   category: string;
   name: string;
   _id: string;
