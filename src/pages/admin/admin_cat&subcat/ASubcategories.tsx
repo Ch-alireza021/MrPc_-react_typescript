@@ -7,7 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Loading } from "../../../components";
 import { handleRequestSort } from "./utils";
 import { subcategoryData } from "./config";
-import { ACASTBody } from "./components";
+import { ACASTBody, ASEABtn } from "./components";
 import {
   EnhancedTableToolbar,
   AdminProductsPagination,
@@ -20,7 +20,6 @@ const ASubcategories = () => {
   const { orderBy, order } = tableDetails;
   const formValues = useSelector((state: RootState) => state?.sPState);
   const {category,subcategory}=formValues
-  console.log({formValues})
   // ----------------------------------------
   const { data, isLoading } = useQuery({
     queryKey: ["ACSubcategory", tableDetails,category,subcategory],
@@ -40,6 +39,7 @@ const ASubcategories = () => {
       <Paper sx={{ width: "100%", mb: 2, borderRadius: "1rem" }}>
         <EnhancedTableToolbar title={" زیر مجموعه"}>
           <ASSearch isOpen={true} />
+          <ASEABtn  />
         </EnhancedTableToolbar>
         <TableContainer sx={{ padding: "1rem" }}>
           <Table
