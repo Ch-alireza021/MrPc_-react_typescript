@@ -7,6 +7,8 @@ import {
   CategoryOrderBy,
   ECOnErrorIF,
   ECOnSuccessIF,
+  SbcategoryDataIF,
+  SubategoryDataIF,
 } from "./interface";
 // ------------------------------------------------
 
@@ -50,9 +52,10 @@ export const eCOnSuccess = ({
   setOpen,
   queryClient,
   isEdit,
+  queryKey,
 }: ECOnSuccessIF) => {
   queryClient.invalidateQueries({
-    queryKey: ["ACCategory"],
+    queryKey: [queryKey],
   });
   setOpen(false);
   showSnackbar({
@@ -102,4 +105,24 @@ export const handleSubmitEditCat = ({
   });
   const id = row ? (row as any)._id : null;
   mutation.mutate({ form_Data, id });
+};
+// handleSubmitEditSubcategory
+// ----------------------
+export const handleSubmitEditSubcategory = ({
+  formValues,
+  row,
+  mutation,
+}: {
+  formValues: SbcategoryDataIF;
+  row?: SbcategoryDataIF;
+  mutation: {
+    mutate: ({ data, id }: { data: SubategoryDataIF; id: string }) => void;
+  };
+}) => {
+  const dataArr: (keyof SbcategoryDataIF)[] = ["name", "category"];
+  const data: SubategoryDataIF = Object.fromEntries(
+    dataArr.map((i) => [[i], formValues[i]])
+  );
+  const id = row ? (row as any)._id : null;
+  mutation.mutate({ data, id });
 };
