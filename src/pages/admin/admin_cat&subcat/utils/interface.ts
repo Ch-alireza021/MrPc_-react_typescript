@@ -8,6 +8,7 @@ export interface CategoryIF {
   _id: string;
   createdAt: string;
   edit?: ReactNode;
+  delete?: ReactNode;
 }
 export interface SubcategoryIF {
   icon: string;
@@ -16,6 +17,7 @@ export interface SubcategoryIF {
   _id: string;
   createdAt: string;
   edit?: ReactNode;
+  delete?: ReactNode;
 }
 
 export type CategoryOrderBy = "name" | "createdAt";
@@ -95,4 +97,12 @@ export interface SbcategoryDataIF {
   category: string;
   name: string;
   _id: string;
+}
+
+
+export interface DCASSuccessIF {
+  setOpen: (arg0: boolean) => void;
+  showSnackbar: ShowSnackbarType;
+  queryClient: any;
+  queryKey:'ACCategory'|'ACSubcategory'
 }

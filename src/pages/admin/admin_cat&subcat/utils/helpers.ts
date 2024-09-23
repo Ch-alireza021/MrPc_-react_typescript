@@ -5,6 +5,7 @@ import { SetStateAction } from "react";
 import {
   CategoryIF,
   CategoryOrderBy,
+  DCASSuccessIF,
   ECOnErrorIF,
   ECOnSuccessIF,
   SbcategoryDataIF,
@@ -125,4 +126,25 @@ export const handleSubmitEditSubcategory = ({
   );
   const id = row ? (row as any)._id : null;
   mutation.mutate({ data, id });
+};
+
+// ------------------------------------------------
+// dCASSuccess ==> delete  category and subcategory success
+// ------------------------------------------------
+
+export const dCASSuccess = ({
+  showSnackbar,
+  setOpen,
+  queryClient,
+  queryKey,
+}: DCASSuccessIF) => {
+  queryClient.invalidateQueries({
+    queryKey: [queryKey],
+  });
+  setOpen(false);
+  showSnackbar({
+    message: ` با موفقیت حذف شد`,
+    severity: "success",
+    key: Math.random(),
+  });
 };
