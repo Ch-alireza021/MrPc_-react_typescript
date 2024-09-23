@@ -1,8 +1,12 @@
-import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { URL_CATEGORY, URL_SUBCATEGORY } from "../../../../../config";
-import { api } from "../../../../../services";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { SelectOption } from "../../../admin_products/components";
 import { styleTextField } from "../../../admin_products/utils";
+import { GeneralButton } from "../../../../../theme";
+import { useSnackbar } from "../../../../../hooks";
+import { api } from "../../../../../services";
+import { TextField } from "@mui/material";
+import { useState } from "react";
 import {
   eCOnError,
   eCOnSuccess,
@@ -10,27 +14,26 @@ import {
   SbcategoryDataIF,
   SubategoryDataIF,
 } from "../../utils";
-import { alpha, Button, TextField } from "@mui/material";
-import { useState } from "react";
-import { useSnackbar } from "../../../../../hooks";
-
+// --------------------------------------------
+// AESForm ==> admin edit subcategory form
 export const AESForm = ({
   row,
   setOpen,
 }: {
-  row: SbcategoryDataIF;
+  row?: SbcategoryDataIF;
   setOpen: (arg0: boolean) => void;
 }) => {
-  const [formValues, setFormValues] = useState<SbcategoryDataIF>(row);
+  const [formValues, setFormValues] = useState<SbcategoryDataIF>(
+    row || { category: "", name: "", _id: "" }
+  );
   const { showSnackbar } = useSnackbar();
   const queryClient = useQueryClient();
   const isEdit = !!row;
   const mutation = useMutation({
     mutationFn: ({ data, id }: { data: SubategoryDataIF; id: string | null }) =>
-      // mutationFn: ({ form_Data, id }: { form_Data: any; id: string | null }) =>
       id
         ? api.patch(`${URL_SUBCATEGORY}/${id}`, data)
-        : api.post(URL_SUBCATEGORY, formValues),
+        : api.post(URL_SUBCATEGORY, data),
     onSuccess: () =>
       eCOnSuccess({
         showSnackbar,
@@ -67,22 +70,12 @@ export const AESForm = ({
           setFormValues((pre) => ({ ...pre, category: value }));
         }}
       />
-      <Button
-        variant="contained"
-        color="success"
-        sx={{
-          bgcolor: (theme) => alpha(theme.palette.grey[500], 0.12),
-          color: "text.secondary",
-          "&:hover": {
-            bgcolor: (theme) => alpha(theme.palette.primary.main, 0.16),
-          },
-        }}
+      <GeneralButton
         onClick={() =>
           handleSubmitEditSubcategory({ formValues, row, mutation })
         }
-      >
-        ذخیره
-      </Button>
+        text={"ذخیره"}
+      />
     </>
   );
 };
