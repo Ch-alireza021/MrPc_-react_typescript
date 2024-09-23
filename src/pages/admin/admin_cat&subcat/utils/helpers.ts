@@ -1,6 +1,8 @@
-import { URL_BACKEND_CATEGORIES_ICONS } from "../../../../config";
+import { URL_BACKEND_CATEGORIES_ICONS, URL_PRODUCT } from "../../../../config";
 import { TableDetailsIF } from "../../admin_products/utils";
 import { downloadImages } from "../../../../features";
+import { ShowSnackbarType } from "../../../../hooks";
+import { generalGet } from "../../../../services";
 import { SetStateAction } from "react";
 import {
   CategoryIF,
@@ -8,11 +10,11 @@ import {
   DCASSuccessIF,
   ECOnErrorIF,
   ECOnSuccessIF,
+  HDDComponentIF,
   SbcategoryDataIF,
   SubategoryDataIF,
 } from "./interface";
 // ------------------------------------------------
-
 export const handleRequestSort = (
   _event: React.MouseEvent<unknown>,
   property: CategoryOrderBy,
@@ -129,9 +131,10 @@ export const handleSubmitEditSubcategory = ({
 };
 
 // ------------------------------------------------
-// dCASSuccess ==> delete  category and subcategory success
+// DeleteComp ==> delete component
 // ------------------------------------------------
-
+// dCASSuccess
+// ------------
 export const dCASSuccess = ({
   showSnackbar,
   setOpen,
@@ -147,4 +150,49 @@ export const dCASSuccess = ({
     severity: "success",
     key: Math.random(),
   });
+};
+
+// eCOnError
+// ------------
+export const dCASError = ({
+  showSnackbar,
+}: {
+  showSnackbar: ShowSnackbarType;
+}) => {
+  const errorMessage = `خطا در حذف`;
+
+  showSnackbar({
+    message: errorMessage,
+    severity: "error",
+    key: Math.random(),
+  });
+};
+
+// eCOnError
+// ------------
+// hDDComponent ==> handle delete DeleteComp
+
+export const hDDComponent = async ({
+  type,
+  row,
+  mutation,
+  showSnackbar,
+  setOpen,
+}: HDDComponentIF) => {
+  try {
+    const res = await generalGet(`${URL_PRODUCT}?${type}=${row._id}`);
+    const total = res.total;
+    if (total === 0) {
+      mutation.mutate({ id: row._id });
+    } else {
+      showSnackbar({
+        message: `این ${
+          type === "category" ? " دسته بندی" : "زیرمجموعه"
+        } در محصولات استفاده شده است.`,
+        severity: "error",
+        key: Math.random(),
+      });
+      setOpen(false);
+    }
+  } catch (error) {}
 };

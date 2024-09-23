@@ -106,3 +106,15 @@ export interface DCASSuccessIF {
   queryClient: any;
   queryKey:'ACCategory'|'ACSubcategory'
 }
+// ------------------------------------------------
+// DeleteComp ==> delete component
+// ------------------------------------------------
+export interface HDDComponentIF {
+  showSnackbar: ShowSnackbarType;
+  setOpen: (arg0: boolean) => void;
+  mutation: {
+    mutate: ({ id }: { id: string | null }) => void;
+  };
+  type: "subcategory" | "category";
+  row: SbcategoryDataIF;
+}
