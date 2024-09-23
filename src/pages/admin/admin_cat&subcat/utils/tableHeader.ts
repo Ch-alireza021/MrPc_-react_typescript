@@ -40,6 +40,12 @@ export const header = (
       disablePadding: false,
       label: " ویرایش",
     },
+    {
+      id: "delete",
+      numeric: false,
+      disablePadding: false,
+      label: " حذف",
+    },
   ].filter((i) => typeof i !== "boolean");
   return data;
 };

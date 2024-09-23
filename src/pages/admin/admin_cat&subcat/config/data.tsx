@@ -1,7 +1,7 @@
 import { URL_CATEGORY } from "../../../../config";
 import { fDate } from "../../../../utils";
 import { CASName } from "../../admin_products/components";
-import { ACASEBtn } from "../components";
+import { ACASEBtn, DeleteBtn } from "../components";
 import { ASEABtn } from "../components/add_edit_subcategory/ASEABtn";
 import { ACASIcon } from "../components/table/ACASIcon";
 import {
@@ -29,6 +29,10 @@ export const categoryData: CategoryDataIF[] = [
     key: "edit",
     render: (row: CategoryIF) => <ACASEBtn row={row} data={aECFormData} />,
   },
+  {
+    key: "delete",
+    render: (row) => <DeleteBtn row={row} type={"category"} />,
+  },
 ];
 // --------------------------------------------
 export const subcategoryData: SubategoryDataIF[] = [
@@ -49,6 +53,10 @@ export const subcategoryData: SubategoryDataIF[] = [
   {
     key: "edit",
     render: (row) => <ASEABtn row={row} />,
+  },
+  {
+    key: "delete",
+    render: (row) => <DeleteBtn row={row} type={"subcategory"} />,
   },
 ];
 // --------------------------------------------

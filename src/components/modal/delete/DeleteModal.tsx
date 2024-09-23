@@ -4,7 +4,7 @@ import { alpha, Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 
-const style = {
+export const deleteStyle = {
   position: "absolute",
   top: "50%",
   left: "50%",
@@ -42,7 +42,7 @@ export const DeleteModal = ({
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
       >
-        <Box sx={{ ...style, width: 400 }}>
+        <Box sx={{ ...deleteStyle, width: 400 }}>
           <h3 id="parent-modal-title">آیا {data?.name} حذف شود؟</h3>
           <Box display={"flex"} gap={2}>
             <Button onClick={() => response(false)}>انصراف</Button>

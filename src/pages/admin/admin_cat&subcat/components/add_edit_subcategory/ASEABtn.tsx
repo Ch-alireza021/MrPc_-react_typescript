@@ -5,7 +5,7 @@ import { BasicModal } from "../../../../../components";
 import { AESForm } from "./AESForm";
 import { SbcategoryDataIF } from "../../utils";
 
-export const ASEABtn = ({ row }: { row: SbcategoryDataIF }) => {
+export const ASEABtn = ({ row }: { row?: SbcategoryDataIF }) => {
   const [open, setOpen] = useState<boolean>(false);
   return (
     <>
