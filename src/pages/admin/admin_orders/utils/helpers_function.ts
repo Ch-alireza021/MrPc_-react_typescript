@@ -1,5 +1,6 @@
 import { ChangeEvent, SetStateAction } from "react";
 import { OrderIF, OrdersOrderBy } from "./interface";
+import { ShowSnackbarType } from "../../../../hooks";
 export const handleChangeRowsPerPage = (
   event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   setRowsPerPage: { (value: SetStateAction<number>): void },
@@ -20,4 +21,19 @@ export const handleRequestSort = (
   const isAsc = orderBy === property && order === "asc";
   setOrder(isAsc ? "desc" : "asc");
   setOrderBy(property);
+};
+
+export const vOSOnSuccess = ({
+  showSnackbar,
+  queryClient,
+}: {
+  showSnackbar: ShowSnackbarType;
+  queryClient: any;
+}) => {
+  showSnackbar({
+    message: ` با موفقیت ثبت شد`,
+    severity: "success",
+    key: Math.random(),
+  });
+  queryClient.invalidateQueries({ queryKey: ["getOrders"] });
 };
