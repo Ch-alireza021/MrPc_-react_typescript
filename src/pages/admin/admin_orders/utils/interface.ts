@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { Row } from "../../../../components";
 
 export interface OrderDataIF {
   user: string;
@@ -39,4 +40,9 @@ export interface SelectedCompIF {
 export interface OrderDataBtn {
   text: string;
   key: selectedType;
+}
+
+export interface ViweOrderIF {
+  row: Row;
+  setOpen: (arg0: boolean) => void;
 }

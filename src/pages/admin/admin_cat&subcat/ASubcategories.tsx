@@ -30,7 +30,6 @@ const ASubcategories = () => {
   });
   // ----------------------------------------
   const dataArr = data?.data?.subcategories;
-  console.log({dataArr})
   const total = Number(data?.total) || 0;
   if (isLoading) return <Loading />;
 
