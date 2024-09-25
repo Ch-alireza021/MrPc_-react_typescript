@@ -11,5 +11,6 @@ export const PATH = {
   ADMINORDERS:'orders',
   ADMINPRODUCTS:'products',
   ACATEGORY:'edit_category',
-  ASUBCATEGORY:'edit_subcategory'
+  ASUBCATEGORY:'edit_subcategory',
+  HOMEPAGESETTINGS:'home_page_settings'
 };

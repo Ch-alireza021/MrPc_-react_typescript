@@ -2,7 +2,6 @@ import { createBrowserRouter, RouteObject } from "react-router-dom";
 import { lazy } from "react";
 import { Loadable } from "../layouts/loadable/Loadable";
 import { PATH } from "../config";
-
 // Lazy load components
 const User = Loadable(lazy(() => import("../layouts/user/User")));
 const Home = Loadable(lazy(() => import("../pages/users/home/Home")));
@@ -29,6 +28,9 @@ const ACategory = Loadable(
 );
 const ASubcategories = Loadable(
   lazy(() => import("../pages/admin/admin_cat&subcat/ASubcategories"))
+);
+const HomePageSettings = Loadable(
+  lazy(() => import("../pages/admin/home_page_settings/HomePageSettings"))
 );
 
 // Define routes
@@ -72,6 +74,10 @@ export const routes: RouteObject[] = [
       {
         path: PATH.ASUBCATEGORY,
         element: <ASubcategories />,
+      },
+      {
+        path: PATH.HOMEPAGESETTINGS,
+        element: <HomePageSettings />,
       },
     ],
   },

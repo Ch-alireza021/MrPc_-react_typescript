@@ -4,7 +4,8 @@ import {
   ProductionQuantityLimits,
   LocalMall,
   SubdirectoryArrowRight,
-  Category
+  Category,
+  Settings
 } from "@mui/icons-material";
 import { PATH } from "../router";
 interface NavItem {
@@ -44,5 +45,10 @@ export const navConfig: NavItem[] = [
     title: "زیرمجموعه",
     path: `/admin/${PATH.ASUBCATEGORY}`,
     icon: <SubdirectoryArrowRight />,
+  },
+  {
+    title: " تنضیمات  صفحه اصلی",
+    path: `/admin/${PATH.HOMEPAGESETTINGS}`,
+    icon: <Settings />,
   },
 ];
