@@ -12,15 +12,12 @@ export interface DataIF {
 
 export type OrderIF = "asc" | "desc";
 export interface EnhancedTablePropsIF {
-  numSelected: number;
   onRequestSort: (
     event: React.MouseEvent<unknown>,
     property: keyof DataIF
   ) => void;
-  onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
   order: OrderIF;
   orderBy: string;
-  rowCount: number;
 }
 
 export interface HeadCellIF {
@@ -32,11 +29,6 @@ export interface HeadCellIF {
 
   export interface UsersTableCellIF {
     row: DataIF;
-    selected: string[];
-    setSelected: {
-      (value: SetStateAction<string[]>): void;
-    };
-    isItemSelected: boolean;
     labelId: string;
     index: number;
   }

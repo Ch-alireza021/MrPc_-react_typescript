@@ -12,14 +12,13 @@ import { DataIF, OrderIF } from "./utils";
 import {
   UsersHeaders,
   UsersTableCell,
-  EnhancedTableToolbar,
 } from "./components";
-import { handleChangeRowsPerPage, handleSelectAllClick } from "./utils";
+import { handleChangeRowsPerPage } from "./utils";
+import { EnhancedTableToolbar } from "../admin_products/components";
 interface UserViewProps {}
 const UserViwe: React.FC<UserViewProps> = () => {
   const [order, setOrder] = React.useState<OrderIF>("desc");
   const [orderBy, setOrderBy] = React.useState<keyof DataIF>("createdAt");
-  const [selected, setSelected] = React.useState<string[]>([]);
   const [page, setPage] = React.useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = React.useState<number>(5);
   const { data, isLoading } = useQuery({
@@ -28,7 +27,7 @@ const UserViwe: React.FC<UserViewProps> = () => {
       await getUsers({ page: page + 1, limit: rowsPerPage, orderBy, order }),
   });
   if (isLoading) return <Loading />;
-  // if (isError) return { isError };
+
   const rows = data?.data?.users || [];
   const total = data?.total || 0;
   const handleRequestSort = (
@@ -41,16 +40,13 @@ const UserViwe: React.FC<UserViewProps> = () => {
   };
 
   const handleChangePage = (_event: unknown, newPage: number) => {
-    console.log("Changing to page:", newPage);
     setPage(newPage);
   };
   
-
-  const isSelected = (_id: string) => selected.indexOf(_id) !== -1;
   return (
     <Box sx={{ width: "100%" }}>
-      <Paper sx={{ width: "100%", mb: 2, borderRadius: "1rem" }}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+      <Paper sx={{ width: "100%", mb: 2, borderRadius: "1rem" ,p:'0 1rem'}}>
+      <EnhancedTableToolbar title={'کاربران'}/>
         <TableContainer>
           <Table
             sx={{ minWidth: 750 }}
@@ -58,27 +54,18 @@ const UserViwe: React.FC<UserViewProps> = () => {
             size="medium"
           >
             <UsersHeaders
-              numSelected={selected.length}
               order={order}
               orderBy={orderBy}
-              onSelectAllClick={(event) =>
-                handleSelectAllClick(event, rows, setSelected)
-              }
               onRequestSort={handleRequestSort}
-              rowCount={rows.length}
             />
             <TableBody>
               {rows?.map((row: DataIF, index: number) => {
-                const isItemSelected = isSelected(row._id);
                 const labelId = `enhanced-table-checkbox-${index}`;
                 return (
                   <UsersTableCell
                   key={index}
                     {...{
                       row,
-                      selected,
-                      setSelected,
-                      isItemSelected,
                       labelId,
                       index,
                     }}
