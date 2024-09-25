@@ -1,7 +1,11 @@
+import { HPSCPageProvider } from "../../../features";
+import { HPSLayouts } from "./components";
 const HomePageSettings = () => {
   return (
-    <div>HomePageSettings</div>
-  )
-}
+    <HPSCPageProvider>
+      <HPSLayouts/>
+    </HPSCPageProvider>
+  );
+};
 
-export default HomePageSettings
+export default HomePageSettings;
