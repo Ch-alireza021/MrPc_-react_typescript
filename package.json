@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "json-server": "json-server --watch db.json "
   },
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^43.0.0",
@@ -29,6 +30,7 @@
     "formik": "^2.4.6",
     "framer-motion": "^11.3.28",
     "js-cookie": "^3.0.5",
+    "json-server": "^0.17.0",
     "moment-jalaali": "^0.10.1",
     "numeral": "^2.0.6",
     "react": "^18.3.1",

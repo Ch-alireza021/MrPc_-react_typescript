@@ -1,0 +1,76 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "HPSConfigDB": [
+    {
+      "selected": [
+        "66d98d3f308365c70f7372ff",
+        "6572ddee1299a072a607fad8",
+        "656cbcb53775cacbd52bc81c"
+      ],
+      "id": 1
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "usericm": [
+    {
+      "id": 1,
+      "fname": "Ali",
+      "lname": "Mirzad",
+      "userName": "mirzadhastam",
+      "email": "mirzadali@gmail.com",
+      "password": "123456",
+      "phone": "09918404840",
+      "address": "Tehran",
+      "role": "admin",
+      "image": []
+    },
+    {
+      "id": 2,
+      "fname": "Hosein",
+      "lname": "Gholami",
+      "userName": "hoseingh7",
+      "email": "hosein76@gmail.com",
+      "password": "123456",
+      "phone": "09371606733",
+      "address": "Tehran",
+      "role": "admin",
+      "image": []
+    },
+    {
+      "id": 3,
+      "fname": "Ramin",
+      "lname": "Gholami",
+      "userName": "ramingh",
+      "email": "ramin79@gmail.com",
+      "password": "1234567",
+      "phone": "09371606733",
+      "address": "Tehran",
+      "role": "admin",
+      "image": []
+    },
+    {
+      "id": 4,
+      "fname": "Nader",
+      "lname": "Naderi",
+      "userName": "naderJava",
+      "email": "nader01@gmail.com",
+      "password": "00112233",
+      "phone": "09184872685",
+      "address": "Tehran",
+      "role": "admin",
+      "image": []
+    }
+  ]
+}
