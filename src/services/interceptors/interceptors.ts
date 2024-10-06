@@ -1,8 +1,14 @@
 import axios from "axios";
-import { BASE_URL, URL_REFRESH_TOKEN } from "../../config";
-import { getAccessToken, getLoginRole, getRefreshToken, setAccessToken } from "../cookies";
+import { BASE_URL, DBBASE_URL, URL_REFRESH_TOKEN } from "../../config";
+import {
+  getAccessToken,
+  getLoginRole,
+  getRefreshToken,
+  setAccessToken,
+} from "../cookies";
 // -----------------------------------------------------------
 export const api = axios.create({ baseURL: BASE_URL });
+export const dpi = axios.create({ baseURL: DBBASE_URL });
 // -----------------------------------------------------------
 export const refresh = async (_data: string | undefined) => {
   try {
@@ -11,7 +17,7 @@ export const refresh = async (_data: string | undefined) => {
       refreshToken: refreshToken,
     });
     return response.data;
-  } catch (error:any) {
+  } catch (error: any) {
     throw error.response.message;
   }
 };
